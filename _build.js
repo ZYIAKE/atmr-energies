@@ -85,14 +85,43 @@ const SERVICES = [
 ];
 
 const CITIES = [
-  { slug: 'bordeaux', name: 'Bordeaux', cp: '33000', quartiers: ['Chartrons', 'Caudéran', 'Bastide', 'Saint-Michel', 'Bacalan', 'Saint-Augustin'], distanceKm: 18 },
-  { slug: 'montussan', name: 'Montussan', cp: '33450', quartiers: ['Centre-bourg', 'Les Cardounats', 'Route de la Cure', 'Beauséjour'], distanceKm: 0 },
-  { slug: 'libourne', name: 'Libourne', cp: '33500', quartiers: ['Centre historique', 'Les Dagueys', 'Carré Cassin'], distanceKm: 15 },
-  { slug: 'merignac', name: 'Mérignac', cp: '33700', quartiers: ['Capeyron', 'Arlac', 'Beutre', 'Bourranville'], distanceKm: 25 },
-  { slug: 'pessac', name: 'Pessac', cp: '33600', quartiers: ['Centre', 'Cap de Bos', 'Saige', 'Toctoucau'], distanceKm: 30 },
-  { slug: 'saint-andre-de-cubzac', name: 'Saint-André-de-Cubzac', cp: '33240', quartiers: ['Centre', 'Pont du Cubzaguais', 'La Garosse'], distanceKm: 13 },
-  { slug: 'cenon', name: 'Cenon', cp: '33150', quartiers: ['Le Loret', 'La Marègue', 'Palmer'], distanceKm: 13 },
-  { slug: 'lormont', name: 'Lormont', cp: '33310', quartiers: ['Carriet', 'Génicart', 'Centre-ville'], distanceKm: 12 },
+  // Montussan + hyper-proches (0-10 km)
+  { slug: 'montussan', name: 'Montussan', cp: '33450', quartiers: ['Centre-bourg', 'Les Cardounats', 'Route de la Cure', 'Beauséjour'], distanceKm: 0, note: 'notre siège historique, nous connaissons chaque rue et chaque type de logement de la commune' },
+  { slug: 'yvrac', name: 'Yvrac', cp: '33370', quartiers: ['Bourg', 'Le Courneau', 'Chemin de Perruche'], distanceKm: 3, note: 'commune viticole de l\'Entre-deux-Mers, mix de maisons pierre anciennes et pavillons années 70-2000' },
+  { slug: 'beychac-et-caillau', name: 'Beychac-et-Caillau', cp: '33750', quartiers: ['Bourg', 'Beychac', 'Caillau', 'Capian'], distanceKm: 3, note: 'village limitrophe à Montussan, nous intervenons souvent chez les voisins directs de notre siège' },
+  { slug: 'sainte-eulalie', name: 'Sainte-Eulalie', cp: '33560', quartiers: ['Bourg', 'Le Haillan', 'La Blanquette'], distanceKm: 5, note: 'commune en forte croissance, nombreuses constructions neuves nécessitant systèmes performants' },
+  { slug: 'saint-loubes', name: 'Saint-Loubès', cp: '33450', quartiers: ['Centre', 'La Grave', 'Les Coustilles', 'Cantinolle'], distanceKm: 5, note: 'même code postal 33450 que Montussan, village voisin direct' },
+  { slug: 'saint-sulpice-et-cameyrac', name: 'Saint-Sulpice-et-Cameyrac', cp: '33450', quartiers: ['Saint-Sulpice', 'Cameyrac', 'Le Courtaud'], distanceKm: 4, note: 'autre commune 33450, à 4 km de notre siège' },
+  { slug: 'tresses', name: 'Tresses', cp: '33370', quartiers: ['Centre', 'Les Pins', 'Pont-Ducros', 'La Seguinie'], distanceKm: 7, note: 'commune périurbaine dynamique sur la route de Bordeaux, mix de villas et lotissements récents' },
+  { slug: 'salleboeuf', name: 'Sallebœuf', cp: '33370', quartiers: ['Bourg', 'Les Graves', 'La Taste'], distanceKm: 6, note: 'village rural tranquille, forte demande de rénovation énergétique des maisons anciennes' },
+  { slug: 'pompignac', name: 'Pompignac', cp: '33370', quartiers: ['Centre', 'Mouchetaillade', 'Chemin du Pas de la Cabane'], distanceKm: 8, note: 'commune résidentielle haut de gamme, nombreuses propriétés avec plancher chauffant et PAC' },
+  { slug: 'ambares-et-lagrave', name: 'Ambarès-et-Lagrave', cp: '33440', quartiers: ['Centre', 'La Gorp', 'Sabardin', 'La Blanche'], distanceKm: 8, note: 'commune Bordeaux Métropole au nord, tissu mixte pavillons et échoppes' },
+  { slug: 'carignan-de-bordeaux', name: 'Carignan-de-Bordeaux', cp: '33360', quartiers: ['Bourg', 'Beauval', 'La Source'], distanceKm: 8, note: 'commune résidentielle à l\'est de Bordeaux, nombreuses maisons contemporaines' },
+  { slug: 'bassens', name: 'Bassens', cp: '33530', quartiers: ['Centre', 'Bâts', 'Meignan', 'Prévost'], distanceKm: 10, note: 'commune Bordeaux Métropole rive droite, parc immobilier mixte industriel et résidentiel' },
+  { slug: 'artigues-pres-bordeaux', name: 'Artigues-près-Bordeaux', cp: '33370', quartiers: ['Centre', 'Feydeau', 'Gabachot', 'Jolibois'], distanceKm: 10, note: 'commune résidentielle de la rive droite, proche du parc de Mirassou' },
+  { slug: 'lormont', name: 'Lormont', cp: '33310', quartiers: ['Carriet', 'Génicart', 'Centre-ville', 'Cypressat'], distanceKm: 12, note: 'commune Bordeaux Métropole rive droite avec belles vues sur la Garonne et le pont Chaban-Delmas' },
+  { slug: 'izon', name: 'Izon', cp: '33870', quartiers: ['Bourg', 'Macot', 'Carignan', 'Lalande'], distanceKm: 12, note: 'village de l\'Entre-deux-Mers, proche Libourne, forte demande PAC en remplacement fioul' },
+  { slug: 'cenon', name: 'Cenon', cp: '33150', quartiers: ['Le Loret', 'La Marègue', 'Palmer', 'La Bastide'], distanceKm: 13, note: 'commune dynamique de la rive droite, nombreuses copropriétés années 70 et rénovations récentes' },
+  { slug: 'saint-andre-de-cubzac', name: 'Saint-André-de-Cubzac', cp: '33240', quartiers: ['Centre', 'Pont du Cubzaguais', 'La Garosse', 'Le Couteron'], distanceKm: 13, note: 'porte du Cubzaguais au nord de Bordeaux, mix maisons pierre anciennes et lotissements neufs' },
+  { slug: 'fargues-saint-hilaire', name: 'Fargues-Saint-Hilaire', cp: '33370', quartiers: ['Bourg', 'Fargues', 'Saint-Hilaire', 'Les Landes'], distanceKm: 13, note: 'village rural en périphérie, propriétés familiales avec chauffage individuel à rénover' },
+  { slug: 'cubzac-les-ponts', name: 'Cubzac-les-Ponts', cp: '33240', quartiers: ['Centre', 'Les Quatre Pavillons', 'Mariet'], distanceKm: 14, note: 'commune du Cubzaguais au bord de la Dordogne, architecture traditionnelle de pierre' },
+  { slug: 'floirac', name: 'Floirac', cp: '33270', quartiers: ['Centre', 'Jardin Botanique', 'Dravemont', 'Souys'], distanceKm: 14, note: 'commune Bordeaux Métropole avec coteaux viticoles, tissu résidentiel varié' },
+  { slug: 'vayres', name: 'Vayres', cp: '33870', quartiers: ['Bourg', 'Château de Vayres', 'Libarde'], distanceKm: 14, note: 'village du Libournais avec château médiéval, maisons en pierre calcaire' },
+  { slug: 'bouliac', name: 'Bouliac', cp: '33270', quartiers: ['Bourg', 'Hauts de Bouliac', 'Château'], distanceKm: 15, note: 'commune résidentielle haut de gamme sur les coteaux, belles propriétés avec besoins spécifiques' },
+  { slug: 'libourne', name: 'Libourne', cp: '33500', quartiers: ['Centre historique', 'Les Dagueys', 'Carré Cassin', 'Bel-Air'], distanceKm: 15, note: 'sous-préfecture de la Gironde, bastide médiévale, nombreux appartements anciens en rénovation' },
+  { slug: 'pomerol', name: 'Pomerol', cp: '33500', quartiers: ['Bourg', 'Château Pétrus', 'La Commanderie'], distanceKm: 16, note: 'appellation viticole mondialement connue, châteaux et propriétés de caractère à équiper' },
+  { slug: 'bordeaux', name: 'Bordeaux', cp: '33000', quartiers: ['Chartrons', 'Caudéran', 'Bastide', 'Saint-Michel', 'Bacalan', 'Saint-Augustin', 'Victoire'], distanceKm: 18, note: 'capitale régionale inscrite UNESCO, tissu dense d\'échoppes bordelaises et immeubles haussmanniens' },
+  { slug: 'saint-emilion', name: 'Saint-Émilion', cp: '33330', quartiers: ['Centre UNESCO', 'Plateau', 'Saint-Hippolyte'], distanceKm: 20, note: 'village médiéval classé UNESCO, propriétés viticoles prestigieuses et chambres d\'hôtes' },
+  { slug: 'le-bouscat', name: 'Le Bouscat', cp: '33110', quartiers: ['Centre', 'Les Écus', 'Sainte-Anne', 'Hippodrome'], distanceKm: 20, note: 'commune bourgeoise au nord de Bordeaux, nombreuses échoppes et maisons de maître' },
+  { slug: 'begles', name: 'Bègles', cp: '33130', quartiers: ['Centre', 'Terres Neuves', 'Dorat', 'Carle'], distanceKm: 21, note: 'commune en pleine mutation au sud de Bordeaux, projets immobiliers modernes et rénovations' },
+  { slug: 'blanquefort', name: 'Blanquefort', cp: '33290', quartiers: ['Centre', 'Caychac', 'Grattequina', 'Majolan'], distanceKm: 22, note: 'commune porte du Médoc, forte présence pavillonnaire et quelques châteaux viticoles' },
+  { slug: 'talence', name: 'Talence', cp: '33400', quartiers: ['Centre', 'Forum', 'Peixotto', 'Thouars', 'Médoquine'], distanceKm: 22, note: 'ville universitaire au sud de Bordeaux, mix étudiant et résidentiel familial' },
+  { slug: 'bruges', name: 'Bruges', cp: '33520', quartiers: ['Centre', 'Terrefort', 'La Béchade', 'Tasta'], distanceKm: 20, note: 'commune Bordeaux Métropole au nord-ouest, forte densité résidentielle récente' },
+  { slug: 'eysines', name: 'Eysines', cp: '33320', quartiers: ['Centre', 'Migelane', 'Le Grand-Louis', 'Cantinolle'], distanceKm: 24, note: 'commune maraîchère historique devenue résidentielle, mix maisons de maraîchers et lotissements' },
+  { slug: 'merignac', name: 'Mérignac', cp: '33700', quartiers: ['Capeyron', 'Arlac', 'Beutre', 'Bourranville', 'La Glacière'], distanceKm: 25, note: 'deuxième ville Bordeaux Métropole, aéroport et bassin d\'emploi, forte demande clim tertiaire' },
+  { slug: 'villenave-d-ornon', name: 'Villenave-d\'Ornon', cp: '33140', quartiers: ['Centre', 'Pont-de-la-Maye', 'Chambéry', 'Sarcignan'], distanceKm: 27, note: 'commune du sud Bordeaux Métropole, grand parc pavillonnaire à rénover' },
+  { slug: 'gradignan', name: 'Gradignan', cp: '33170', quartiers: ['Centre', 'Malartic', 'Beausoleil', 'Carbon-Blanc'], distanceKm: 28, note: 'commune résidentielle chic au sud de Bordeaux, belles propriétés avec parcs' },
+  { slug: 'pessac', name: 'Pessac', cp: '33600', quartiers: ['Centre', 'Cap de Bos', 'Saige', 'Toctoucau', 'Magonty'], distanceKm: 30, note: 'grande commune étudiante et résidentielle, campus universitaire et parc immobilier varié' },
 ];
 
 const FAQS = [
@@ -355,7 +384,7 @@ ${SERVICES.map(s => `<li><a href="/${s.slug}.html">${s.label}</a></li>`).join('\
 <div class="footer-col">
 <h3>Zones desservies</h3>
 <ul>
-${CITIES.slice(0, 7).map(c => `<li><a href="/chauffagiste-${c.slug}.html">Chauffagiste ${c.name}</a></li>`).join('\n')}
+${['bordeaux','merignac','pessac','libourne','saint-andre-de-cubzac','talence','cenon'].map(slug => { const c = CITIES.find(x => x.slug === slug); return c ? `<li><a href="/chauffagiste-${c.slug}.html">Chauffagiste ${c.name}</a></li>` : ''; }).join('\n')}
 <li><a href="/zone-intervention.html">Voir toutes les zones</a></li>
 </ul>
 </div>
@@ -576,9 +605,9 @@ ${brandsSection()}
 <h2 class="section-title">Nos zones d'intervention en Gironde</h2>
 <p class="section-subtitle">${B.zoneRadiusKm} km autour de ${B.city} dans tout le département 33</p>
 <div class="cities-grid">
-${CITIES.map(c => `<a href="/chauffagiste-${c.slug}.html" class="city-link">${iconSvg.mapPin} Chauffagiste ${c.name}</a>`).join('\n')}
+${CITIES.slice(0, 15).map(c => `<a href="/chauffagiste-${c.slug}.html" class="city-link">${iconSvg.mapPin} Chauffagiste ${c.name}</a>`).join('\n')}
 </div>
-<div style="text-align:center;margin-top:2rem;"><a href="/zone-intervention.html" class="btn btn-secondary">Voir toutes les zones desservies ${iconSvg.arrow}</a></div>
+<div style="text-align:center;margin-top:2rem;"><a href="/zone-intervention.html" class="btn btn-secondary">Voir les ${CITIES.length} villes desservies en Gironde ${iconSvg.arrow}</a></div>
 </div></section>
 
 ${googleReviewsSection()}
@@ -782,7 +811,7 @@ function genVillePage(city) {
 
 <section class="seo-section"><div class="container seo-content">
 <h2>Votre artisan chauffagiste à ${city.name}</h2>
-<p>Située à ${city.distanceKm === 0 ? 'notre siège historique' : city.distanceKm + ' km de notre siège'} de ${B.city}, la commune de <strong>${city.name}</strong> (${city.cp}) fait partie de notre zone d'intervention prioritaire. Que vous soyez propriétaire d'une maison individuelle, d'un appartement en copropriété ou d'un local professionnel, ${B.name} met à votre service son expertise en <strong>énergies renouvelables</strong> : pompes à chaleur air-eau et air-air, climatisation réversible, VMC simple et double flux, chaudières à condensation, entretien et dépannage.</p>
+<p>Située à ${city.distanceKm === 0 ? 'notre siège historique' : city.distanceKm + ' km de notre siège'} de ${B.city}, la commune de <strong>${city.name}</strong> (${city.cp}) fait partie de notre zone d'intervention prioritaire — ${city.note || 'commune que nous desservons régulièrement'}. Que vous soyez propriétaire d'une maison individuelle, d'un appartement en copropriété ou d'un local professionnel, ${B.name} met à votre service son expertise en <strong>énergies renouvelables</strong> : pompes à chaleur air-eau et air-air, climatisation réversible, VMC simple et double flux, chaudières à condensation, entretien et dépannage.</p>
 <p>À ${city.name}, nous intervenons notamment dans les quartiers de <strong>${city.quartiers.slice(0, -1).join(', ')} et ${city.quartiers[city.quartiers.length - 1]}</strong>. Notre connaissance du bâti local (maisons anciennes en pierre, échoppes bordelaises, constructions récentes, copropriétés des années 70-80) nous permet de dimensionner précisément vos équipements selon la configuration de votre logement : surface habitable, isolation, orientation, nombre de radiateurs existants, type de production d'eau chaude.</p>
 <p>Avec la hausse continue des tarifs de l'énergie et les obligations de rénovation énergétique (loi Climat et Résilience, interdiction progressive des chaudières fioul), de plus en plus de ménages de ${city.name} font le choix de remplacer leur ancien système par une <strong>pompe à chaleur air-eau</strong>. À la clé : jusqu'à <strong>70% d'économies</strong> sur la facture de chauffage par rapport à une chaudière fioul ou électrique ancienne. Nous vous accompagnons de la visite technique jusqu'à la mise en service de votre nouvel équipement.</p>
 </div></section>
@@ -807,7 +836,7 @@ ${SERVICES.map(s => `<a href="/${s.slug}.html" class="service-card">
 <p>Basés à ${B.city}, nous garantissons une <strong>réactivité maximale</strong> sur ${city.name}. Pour une intervention de dépannage (fuite, panne de PAC, panne chaudière, climatisation qui ne refroidit plus), nous sommes en général chez vous sous <strong>24 à 72 heures</strong>. Pour une installation complète, nos équipes calent le chantier en 3 à 6 semaines selon le matériel commandé et la disponibilité de vos interlocuteurs (syndic, gestionnaire de copropriété, etc.).</p>
 <p>Nous accompagnons régulièrement les habitants de ${city.name} sur des chantiers variés : remplacement de chaudière gaz en fin de vie par une PAC air-eau Daikin Altherma, installation de climatisation réversible Mitsubishi MSZ dans les chambres à l'étage, mise en conformité ventilation VMC hygroréglable, pose de radiateurs basse température sur circuit PAC existant, dépannage et re-mise en service après l'hiver. Nous nous adaptons à <strong>chaque type de logement</strong> : maisons individuelles, échoppes, appartements T2/T3/T4 en copropriété, locaux commerciaux.</p>
 <h2>Communes voisines que nous desservons également</h2>
-<p>Depuis ${B.city}, nous intervenons dans un rayon de ${B.zoneRadiusKm} km : ${CITIES.filter(c => c.slug !== city.slug).map(c => `<a href="/chauffagiste-${c.slug}.html">${c.name}</a>`).join(', ')}. Voir notre <a href="/zone-intervention.html">zone d'intervention complète</a>.</p>
+<p>Depuis ${B.city}, nous intervenons dans un rayon de ${B.zoneRadiusKm} km. Voici les communes les plus proches de ${city.name} que nous couvrons aussi : ${CITIES.filter(c => c.slug !== city.slug).map(c => ({ ...c, d: Math.abs(c.distanceKm - city.distanceKm) })).sort((a,b)=>a.d-b.d).slice(0, 10).map(c => `<a href="/chauffagiste-${c.slug}.html">${c.name}</a>`).join(', ')}. Consultez notre <a href="/zone-intervention.html">zone d'intervention complète</a> pour la liste des 30+ villes de Gironde que nous desservons.</p>
 </div></section>
 
 ${testimonialsSection()}
