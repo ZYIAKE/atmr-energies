@@ -514,6 +514,74 @@ ${ctaBanner()}
   writeHtml(path.join(__dirname, 'realisations.html'), html);
 }
 
+// ============================== TARIFS ==============================
+
+function genTarifsPage() {
+  const title = `Tarifs chauffagiste à ${B.city} et Bordeaux — ${B.name}`;
+  const desc = `Fourchettes de prix pour l'installation de PAC, climatisation, VMC et chauffage en Gironde. Devis gratuit détaillé sous 48h.`;
+  const pricing = [
+    { label: 'Pompe à chaleur air-eau', range: '8 000 € – 18 000 €', detail: 'Installation complète, matériel + pose + mise en service, selon puissance (6 à 16 kW) et type d\'émetteurs (radiateurs, plancher chauffant).' },
+    { label: 'Pompe à chaleur air-air (monosplit)', range: '1 500 € – 3 500 €', detail: 'Un groupe extérieur + une unité intérieure, posé et mis en service. Compatible avec les grandes marques (Daikin, Mitsubishi, Toshiba).' },
+    { label: 'Climatisation multisplit', range: '3 500 € – 7 500 €', detail: 'Un groupe extérieur + 2 à 5 unités intérieures pour plusieurs pièces. Idéal pour maisons 100-150 m².' },
+    { label: 'Climatisation gainable', range: '6 000 € – 12 000 €', detail: 'Solution haut de gamme invisible, diffusion par bouches dans les faux-plafonds. Études aéraulique incluse.' },
+    { label: 'VMC simple flux hygroréglable', range: '800 € – 2 000 €', detail: 'Extraction modulée selon humidité. Adapté aux rénovations et petits logements (T2 à T4).' },
+    { label: 'VMC double flux avec récupération de chaleur', range: '3 000 € – 4 500 €', detail: 'Récupère jusqu\'à 90% de la chaleur sortante. Économies énergétiques de 10 à 20%.' },
+    { label: 'Chaudière à condensation gaz', range: '3 500 € – 7 500 €', detail: 'Remplacement chaudière standard par modèle à condensation (rendement 108-110%). Gain 25 à 30% sur facture.' },
+    { label: 'Plancher chauffant hydraulique', range: '50 € – 90 € / m²', detail: 'Pose + chape incluse. Durée chantier 4 à 7 jours. Compatible PAC pour rendement optimal.' },
+    { label: 'Radiateurs basse température (unité)', range: '250 € – 900 €', detail: 'Indispensables pour profiter du rendement d\'une chaudière à condensation ou d\'une PAC air-eau. Marques Acova, Finimetal, Atlantic.' },
+    { label: 'Entretien annuel chaudière', range: '160 € / an', detail: 'Contrat visite annuelle + attestation + priorité SAV + 15% remise sur pièces détachées.' },
+    { label: 'Entretien annuel PAC air-eau', range: '180 € / an', detail: 'Contrôle F-Gas, nettoyage unités, pressions circuit, attestation. Obligatoire sur PAC >4 kW (décret 2020-912).' },
+    { label: 'Entretien annuel climatisation', range: '120 € / an (par unité intérieure)', detail: 'Nettoyage filtres, contrôle circuit frigorifique, équilibrage.' },
+    { label: 'Entretien annuel VMC', range: '130 € / an', detail: 'Nettoyage bouches + caisson + filtres (pour VMC double flux), contrôle débit.' },
+    { label: 'Dépannage ponctuel (sans contrat)', range: '95 € déplacement + 65 €/h', detail: 'Diagnostic + main d\'œuvre. Pièces au prix public constructeur. Contrats d\'entretien : déplacement gratuit.' },
+  ];
+  const html = head(title, desc, B.url + '/tarifs.html')
+  + topbar()
+  + nav()
+  + breadcrumb([{ href: '/', label: 'Accueil' }, { label: 'Tarifs' }])
+  + `<main>
+<section class="page-header"><div class="container">
+<h1>Nos tarifs indicatifs en Gironde</h1>
+<p class="page-header-lead">Fourchettes de prix pour nos principales prestations. Chaque projet est unique : nous vous remettons un devis détaillé poste par poste après visite technique gratuite à domicile.</p>
+</div></section>
+
+<section class="seo-section"><div class="container" style="max-width:980px;">
+<div style="background:var(--primary-light); border-left:4px solid var(--primary); padding:1.2rem; border-radius:8px; margin-bottom:2rem;">
+<strong>💡 Pour un chiffrage précis, demandez votre devis gratuit</strong>
+<p style="margin-top:.5rem; color:var(--text-mid); font-size:.93rem;">Les prix ci-dessous sont des fourchettes indicatives basées sur nos chantiers récents en Gironde. Le prix final dépend de la configuration de votre logement, de la marque et de la puissance choisies, et de la complexité de pose. Contactez-nous pour une <a href="/devis.html">étude gratuite détaillée</a>.</p>
+</div>
+<div class="tarifs-grid">
+${pricing.map(p => `<article class="tarif-card">
+<div class="tarif-head"><h3>${p.label}</h3><div class="tarif-range">${p.range}</div></div>
+<p>${p.detail}</p>
+</article>`).join('\n')}
+</div>
+</div></section>
+
+<section class="seo-section" style="background:var(--bg);"><div class="container seo-content">
+<h2>Modalités de paiement et financement</h2>
+<p>Nous acceptons les paiements par <strong>virement bancaire</strong>, <strong>chèque</strong> et <strong>carte bancaire jusqu'à 5 000 €</strong>. Pour les chantiers supérieurs à 3 000 €, nous proposons un <strong>financement en 3, 4 ou 10 fois sans frais</strong> via notre partenaire bancaire (sous réserve d'acceptation du dossier).</p>
+<p>Pour les gros projets (PAC + VMC + chauffage complet) : un acompte de 30% est demandé à la commande, 40% à mi-chantier, et le solde de 30% à la livraison.</p>
+<h2>TVA applicable</h2>
+<p>Les travaux réalisés chez des particuliers dans des logements de plus de 2 ans bénéficient de la <strong>TVA à 10%</strong> (article 279-0 bis du CGI). Dans les logements neufs ou pour des travaux non éligibles, la TVA normale de 20% s'applique. Le taux applicable est toujours précisé sur le devis.</p>
+<h2>Garanties incluses</h2>
+<p>Toutes nos installations sont livrées avec :</p>
+<ul>
+<li><strong>Garantie décennale</strong> obligatoire (articles 1792 et suivants du Code civil)</li>
+<li><strong>Garantie biennale</strong> sur les éléments d'équipement dissociables</li>
+<li><strong>Garantie constructeur</strong> : 2 à 10 ans selon marques (ex : 10 ans compresseur Daikin, 7 ans Mitsubishi Zubadan)</li>
+<li><strong>Garantie de parfait achèvement</strong> pendant 1 an</li>
+</ul>
+</div></section>
+
+${faqSection(FAQS.slice(0, 5))}
+
+${ctaBanner()}
+</main>`
+  + footer();
+  writeHtml(path.join(__dirname, 'tarifs.html'), html);
+}
+
 // ============================== LEGAL ==============================
 
 function genMentionsLegales() {
@@ -749,6 +817,7 @@ function genPlanDuSite() {
 <li><a href="/faq.html">Foire aux questions</a></li>
 <li><a href="/contact.html">Contact</a></li>
 <li><a href="/devis.html">Devis gratuit</a></li>
+<li><a href="/tarifs.html">Tarifs indicatifs</a></li>
 </ul>
 
 <h2>Prestations</h2>
@@ -815,6 +884,7 @@ function genSitemap() {
     { loc: '/faq.html', priority: 0.7 },
     { loc: '/contact.html', priority: 0.8 },
     { loc: '/devis.html', priority: 0.9 },
+    { loc: '/tarifs.html', priority: 0.8, changefreq: 'monthly' },
     ...SERVICES.map(s => ({ loc: `/${s.slug}.html`, priority: 0.9, changefreq: 'monthly' })),
     ...CITIES.map(c => ({ loc: `/chauffagiste-${c.slug}.html`, priority: 0.85, changefreq: 'monthly' })),
     { loc: '/mentions-legales.html', priority: 0.3 },
@@ -851,7 +921,7 @@ function genHeaders() {
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://slcksfqbsbcmvqupbhox.supabase.co https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://slcksfqbsbcmvqupbhox.supabase.co https://www.google-analytics.com https://*.clarity.ms; frame-src https://www.google.com https://maps.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
 
 /*.css
   Cache-Control: public, max-age=31536000, immutable
@@ -967,7 +1037,17 @@ Thumbs.db
 
 // ============================== RUN ==============================
 
+(async () => {
 console.log('🏗️  Génération complète du site ATMR ÉNERGIES...\n');
+
+// Fetch Google reviews au build-time pour les injecter en JSON-LD
+try {
+  const gr = await b.fetchGoogleReviews();
+  b.setGoogleReviews(gr);
+  console.log(`📣 Avis Google fetchés : ${gr.total || 0} avis, note ${gr.rating || '-'}/5\n`);
+} catch (e) {
+  console.warn('⚠️  Fetch avis Google échoué, fallback sur valeurs par défaut');
+}
 
 b.genHomepage();
 b.genAPropos();
@@ -984,6 +1064,7 @@ genFaqPage();
 genAvisPage();
 genZoneInterventionPage();
 genRealisationsPage();
+genTarifsPage();
 genMentionsLegales();
 genPolitiqueConfidentialite();
 genCGV();
@@ -998,4 +1079,5 @@ genReadme();
 genGitignore();
 
 console.log('\n✅ Site ATMR ÉNERGIES généré avec succès.');
-console.log(`   Pages : ${3 + SERVICES.length + CITIES.length + 7 + 4} pages + sitemap + robots + _headers + _redirects`);
+console.log(`   Pages : ${3 + SERVICES.length + CITIES.length + 8 + 4} pages + sitemap + robots + _headers + _redirects`);
+})();

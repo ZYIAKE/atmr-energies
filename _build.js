@@ -5,6 +5,29 @@
 
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
+
+// Fetch des avis Google au build time pour Review[] en JSON-LD
+function fetchGoogleReviews() {
+  const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNsY2tzZnFic2JjbXZxdXBiaG94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2OTk1NTksImV4cCI6MjA4ODI3NTU1OX0.Uv3yUk7s1ASmvwra0bYjZDLXTB8LRDNU9qeDfuuyk4I';
+  return new Promise((resolve) => {
+    https.get('https://slcksfqbsbcmvqupbhox.supabase.co/functions/v1/site-google-reviews?domain=atmr-energies.fr', {
+      headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` },
+    }, (res) => {
+      let data = '';
+      res.on('data', (c) => (data += c));
+      res.on('end', () => { try { resolve(JSON.parse(data)); } catch { resolve({ reviews: [], rating: 5, total: 0 }); } });
+    }).on('error', () => resolve({ reviews: [], rating: 5, total: 0 }));
+  });
+}
+
+// Décode le mojibake "é → é" qu'on reçoit de l'API
+function fixMojibake(s) {
+  if (!s) return '';
+  try { return Buffer.from(s, 'latin1').toString('utf8'); } catch { return s; }
+}
+
+let GOOGLE_REVIEWS = { reviews: [], rating: 5, total: 0 };
 
 // ────────────────────────── DONNÉES ENTREPRISE ──────────────────────────
 const B = {
@@ -45,6 +68,7 @@ const B = {
 
 const NAV_LINKS = [
   { href: '/prestations.html', label: 'Prestations' },
+  { href: '/tarifs.html', label: 'Tarifs' },
   { href: '/realisations.html', label: 'Réalisations' },
   { href: '/zone-intervention.html', label: 'Zones' },
   { href: '/avis.html', label: 'Avis' },
@@ -118,6 +142,18 @@ const iconSvg = {
 
 function head(title, description, canonical, extraJsonLd = []) {
   const ogImage = `${B.url}/img/og-image.jpg`;
+  const mapQuery = encodeURIComponent(`${B.street}, ${B.postal} ${B.city}`);
+  const hasMapUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+  const gr = GOOGLE_REVIEWS;
+  const dynRating = gr.total > 0 ? gr.rating.toFixed(1) : B.ratingValue;
+  const dynCount = gr.total > 0 ? String(gr.total) : B.reviewCount;
+  const reviewsLd = (gr.reviews || []).slice(0, 5).map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: fixMojibake(r.reviewer_name || r.author || 'Client Google') },
+    reviewRating: { '@type': 'Rating', ratingValue: String(r.star_rating || r.rating || 5), bestRating: '5', worstRating: '1' },
+    reviewBody: fixMojibake(r.comment || r.text || ''),
+    datePublished: (r.review_create_time || '').slice(0, 10) || undefined,
+  }));
   const base = [
     // LocalBusiness (sur toutes les pages)
     {
@@ -126,10 +162,15 @@ function head(title, description, canonical, extraJsonLd = []) {
       '@id': `${B.url}/#localbusiness`,
       name: B.name,
       image: `${B.url}/favicon.png`,
+      logo: `${B.url}/favicon.png`,
       url: B.url + '/',
       telephone: B.phoneE164,
       email: B.email,
       priceRange: '€€',
+      currenciesAccepted: 'EUR',
+      paymentAccepted: 'Cash, Credit Card, Check, Invoice, Bank Transfer',
+      slogan: 'Chauffagiste expert en Gironde depuis ' + B.foundingYear,
+      description: `Chauffagiste à ${B.city} et en Gironde : installation, entretien et dépannage de pompes à chaleur, climatisation, VMC et chauffage.`,
       address: {
         '@type': 'PostalAddress',
         streetAddress: B.street,
@@ -139,16 +180,19 @@ function head(title, description, canonical, extraJsonLd = []) {
         addressCountry: B.country,
       },
       geo: { '@type': 'GeoCoordinates', latitude: B.geoLat, longitude: B.geoLng },
+      hasMap: hasMapUrl,
       openingHoursSpecification: [
         { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '08:00', closes: '19:00' },
       ],
       founder: { '@type': 'Person', name: B.founderPrimary },
       foundingDate: B.foundingYear,
       taxID: B.tva,
+      vatID: B.tva,
       identifier: { '@type': 'PropertyValue', name: 'SIRET', value: B.siret },
       areaServed: { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: B.geoLat, longitude: B.geoLng }, geoRadius: (B.zoneRadiusKm * 1000).toString() },
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: B.ratingValue, bestRating: '5', worstRating: '1', reviewCount: B.reviewCount },
-      sameAs: [B.facebook, B.instagram],
+      aggregateRating: { '@type': 'AggregateRating', ratingValue: dynRating, bestRating: '5', worstRating: '1', reviewCount: dynCount },
+      ...(reviewsLd.length ? { review: reviewsLd } : {}),
+      sameAs: [B.facebook, B.instagram].filter(Boolean),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Prestations ATMR ÉNERGIES',
@@ -180,8 +224,9 @@ function head(title, description, canonical, extraJsonLd = []) {
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(ogImage)}">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#1e5c87">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -214,7 +259,7 @@ function nav(currentPath = '/') {
   return `<nav role="navigation" aria-label="Navigation principale">
 <div class="container"><div class="nav-inner">
 <a href="/" class="logo" aria-label="Accueil ATMR ÉNERGIES">
-<img src="/img/logo-atmr.png" alt="Logo ATMR ÉNERGIES" class="logo-img" width="48" height="48">
+<img src="/img/logo-atmr.png" alt="Logo ATMR ÉNERGIES" class="logo-img" width="48" height="48" fetchpriority="high">
 <div class="logo-text"><div class="logo-name">ATMR ÉNERGIES</div><div class="logo-sub">Chauffagiste · PAC · Clim · VMC</div></div>
 </a>
 <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -261,15 +306,17 @@ function ctaBanner() {
 </div></section>`;
 }
 
-function mapSection() {
-  const q = encodeURIComponent(`${B.street}, ${B.postal} ${B.city}`);
+function mapSection(opts = {}) {
+  const placeLabel = opts.cityName ? `${opts.cityName}, Gironde` : `${B.street}, ${B.postal} ${B.city}`;
+  const q = encodeURIComponent(opts.cityName ? `${opts.cityName}, ${opts.cityCp || ''}, Gironde, France` : `${B.street}, ${B.postal} ${B.city}`);
+  const zoom = opts.cityName ? 12 : 14;
   const mapsKey = 'AIzaSyCBze4yC7jINgZ7ZovaFU8hPPjyanQ5vzw';
   return `<section class="map-section" aria-label="Notre localisation"><div class="container">
 <iframe
-  src="https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=${q}&zoom=14"
+  src="https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=${q}&zoom=${zoom}"
   loading="lazy"
   referrerpolicy="no-referrer-when-downgrade"
-  title="${B.name} — ${B.street}, ${B.postal} ${B.city}"
+  title="${B.name} — ${placeLabel}"
   allowfullscreen></iframe>
 <div class="map-info">
 <div class="map-info-addr">${iconSvg.mapPin}<div><strong>${B.name}</strong><span>${B.street} · ${B.postal} ${B.city} · Gironde (${B.dept})</span></div></div>
@@ -279,9 +326,14 @@ function mapSection() {
 }
 
 function footer(opts = {}) {
-  const mapHtml = opts.skipMap ? '' : mapSection();
+  const mapHtml = opts.skipMap ? '' : mapSection(opts.mapOverride || {});
+  const gr = GOOGLE_REVIEWS;
+  const ratingDisplay = gr.total > 0 ? gr.rating.toFixed(1) : B.ratingValue;
+  const countDisplay = gr.total > 0 ? gr.total : B.reviewCount;
+  const ratingFooter = `<div class="footer-rating" aria-label="Note Google"><div class="footer-rating-stars">${'★'.repeat(Math.round(parseFloat(ratingDisplay)))}${'☆'.repeat(5 - Math.round(parseFloat(ratingDisplay)))}</div><span><strong>${ratingDisplay}/5</strong> · ${countDisplay} avis Google</span></div>`;
   return `${mapHtml}<footer>
 <div class="container">
+${ratingFooter}
 <div class="footer-grid">
 <div class="footer-col">
 <div class="footer-brand">
@@ -454,8 +506,8 @@ function writeHtml(filename, html) {
 // ────────────────────────── PAGES ──────────────────────────
 
 function genHomepage() {
-  const title = `Chauffagiste à ${B.city} et Bordeaux | PAC, Climatisation, VMC — ${B.name}`;
-  const desc = `${B.name}, votre chauffagiste en Gironde : installation pompe à chaleur, climatisation, VMC et entretien chaudière. Devis gratuit sous 48h à Bordeaux, Libourne, Mérignac. Tél : ${B.phoneDisplay}`;
+  const title = `Chauffagiste Bordeaux & Gironde | PAC, Clim, VMC — ATMR`;
+  const desc = `Chauffagiste à Bordeaux et en Gironde : installation PAC, climatisation, VMC. Devis gratuit 48h, garantie décennale. ${B.phoneDisplay}`;
   const html = head(title, desc, B.url + '/', [
     { '@context': 'https://schema.org', '@type': 'WebSite', name: B.name, url: B.url + '/', publisher: { '@type': 'Organization', name: B.name } },
     { '@context': 'https://schema.org', '@type': 'Organization', '@id': `${B.url}/#organization`, name: B.name, url: B.url + '/', logo: `${B.url}/favicon.png`, contactPoint: { '@type': 'ContactPoint', telephone: B.phoneE164, contactType: 'customer service', availableLanguage: 'French' } },
@@ -764,7 +816,7 @@ ${faqSection(FAQS.slice(0, 5))}
 
 ${ctaBanner()}
 </main>`
-  + footer();
+  + footer({ mapOverride: { cityName: city.name, cityCp: city.cp } });
   writeHtml(path.join(__dirname, `chauffagiste-${city.slug}.html`), html);
 }
 
@@ -775,7 +827,8 @@ module.exports = {
   B, NAV_LINKS, SERVICES, CITIES, FAQS, TESTIMONIALS, BRANDS,
   esc, iconSvg, head, topbar, nav, breadcrumb, ctaBanner, footer, mapSection,
   contactForm, faqSection, testimonialsSection, googleReviewsSection, brandsSection, featuresSection,
-  writeHtml,
+  writeHtml, fetchGoogleReviews,
+  setGoogleReviews: (gr) => { GOOGLE_REVIEWS = gr || { reviews: [], rating: 5, total: 0 }; },
   genHomepage, genAPropos, genPrestations, genServicePage, genVillePage,
 };
 
