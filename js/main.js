@@ -55,18 +55,37 @@ document.addEventListener('DOMContentLoaded', function () {
       var hp = form.querySelector('input[name="website"]');
       if (hp && hp.value) return;
 
-      var data = Object.fromEntries(new FormData(form).entries());
-      data.source = form.dataset.form || 'contact';
-      data.site_domain = 'atmr-energies.fr';
+      var raw = Object.fromEntries(new FormData(form).entries());
+      var formName = form.dataset.form || 'contact';
+      var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNsY2tzZnFic2JjbXZxdXBiaG94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2OTk1NTksImV4cCI6MjA4ODI3NTU1OX0.Uv3yUk7s1ASmvwra0bYjZDLXTB8LRDNU9qeDfuuyk4I';
+      var payload = {
+        site_domain: 'atmr-energies.fr',
+        partner_name: 'ATMR ÉNERGIES',
+        partner_email: 'contact@atmr-energies.fr',
+        visitor_name: raw.nom || '',
+        visitor_phone: raw.telephone || '',
+        visitor_email: raw.email || '',
+        visitor_city: raw.ville || '',
+        service_type: raw.prestation || '',
+        message: raw.message || '',
+        honeypot: raw.website || '',
+        page_url: window.location.pathname,
+        source: formName,
+        fbp: (document.cookie.match(/_fbp=([^;]+)/) || [])[1] || null,
+        fbc: (document.cookie.match(/_fbc=([^;]+)/) || [])[1] || null,
+      };
 
       try {
         var res = await fetch('https://slcksfqbsbcmvqupbhox.supabase.co/functions/v1/site-form-submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          },
+          body: JSON.stringify(payload)
         });
         if (res.ok) {
-          trackEvent('form_submit', { form_name: data.source, prestation: data.prestation || '' });
+          trackEvent('form_submit', { form_name: formName, service_type: payload.service_type });
           window.location.href = '/merci.html';
         } else {
           throw new Error('http_' + res.status);
