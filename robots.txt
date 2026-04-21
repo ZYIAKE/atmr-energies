@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /_build.js
+Disallow: /_build-run.js
+Disallow: /merci.html
+
+Sitemap: https://atmr-energies.fr/sitemap.xml

@@ -1,0 +1,25 @@
+# Redirections du site ATMR ÉNERGIES (anciennes URLs bolt)
+/home    /    301
+/index    /    301
+
+# Anciennes URLs React du site bolt
+/pompe-chaleur    /pompe-a-chaleur.html    301
+/pac    /pompe-a-chaleur.html    301
+/pac-air-air    /climatisation.html    301
+/pac-air-eau    /pompe-a-chaleur.html    301
+/clim    /climatisation.html    301
+/climatisation-reversible    /climatisation.html    301
+/vmc-simple-flux    /vmc.html    301
+/vmc-double-flux    /vmc.html    301
+/chauffage-eau-chaude    /chauffage.html    301
+/depannage    /entretien-depannage.html    301
+/entretien    /entretien-depannage.html    301
+/renovation-energie    /renovation-energetique.html    301
+
+# Anciennes pages ville
+/bordeaux    /chauffagiste-bordeaux.html    301
+/merignac    /chauffagiste-merignac.html    301
+/libourne    /chauffagiste-libourne.html    301
+
+# 404
+/*    /404.html    404
