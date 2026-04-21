@@ -370,9 +370,8 @@ ${ctaBanner()}
 }
 
 function genAvisPage() {
-  const { TESTIMONIALS } = b;
   const title = `Avis clients ATMR ÉNERGIES | Chauffagiste en Gironde`;
-  const desc = `Découvrez les avis de nos clients en Gironde sur nos installations de pompe à chaleur, climatisation et VMC. Note Google : ${B.ratingValue}/5.`;
+  const desc = `Avis Google 100% authentiques et vérifiés sur ${B.name}. Note moyenne 5/5. Découvrez ce que nos clients pensent de nos installations PAC, climatisation et VMC.`;
   const html = head(title, desc, B.url + '/avis.html')
   + topbar()
   + nav()
@@ -380,18 +379,10 @@ function genAvisPage() {
   + `<main>
 <section class="page-header"><div class="container">
 <h1>Avis de nos clients en Gironde</h1>
-<p class="page-header-lead">Note moyenne <strong>${B.ratingValue}/5</strong> sur Google, basée sur ${B.reviewCount} avis clients.</p>
+<p class="page-header-lead">Avis Google 100% authentiques. Note moyenne <strong>5/5</strong>. Nous sommes fiers des retours de nos clients et les partageons ici en toute transparence.</p>
 </div></section>
 
-<section class="testimonials"><div class="container">
-<div class="testimonials-grid">
-${TESTIMONIALS.map(t => `<div class="testimonial-card">
-<div class="testimonial-stars">${'★'.repeat(t.stars)}${'☆'.repeat(5 - t.stars)}</div>
-<p class="testimonial-text">« ${esc(t.text)} »</p>
-<div class="testimonial-author"><span class="testimonial-name">${esc(t.name)}</span><span class="testimonial-location">${esc(t.location)}</span></div>
-</div>`).join('\n')}
-</div>
-</div></section>
+${b.googleReviewsSection()}
 
 <section class="seo-section"><div class="container seo-content">
 <h2>Notre engagement qualité</h2>

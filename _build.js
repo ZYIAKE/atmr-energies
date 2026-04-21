@@ -261,8 +261,26 @@ function ctaBanner() {
 </div></section>`;
 }
 
-function footer() {
-  return `<footer>
+function mapSection() {
+  const q = encodeURIComponent(`${B.street}, ${B.postal} ${B.city}`);
+  const mapsKey = 'AIzaSyCBze4yC7jINgZ7ZovaFU8hPPjyanQ5vzw';
+  return `<section class="map-section" aria-label="Notre localisation"><div class="container">
+<iframe
+  src="https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=${q}&zoom=14"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  title="${B.name} — ${B.street}, ${B.postal} ${B.city}"
+  allowfullscreen></iframe>
+<div class="map-info">
+<div class="map-info-addr">${iconSvg.mapPin}<div><strong>${B.name}</strong><span>${B.street} · ${B.postal} ${B.city} · Gironde (${B.dept})</span></div></div>
+<div style="display:flex;gap:.6rem;"><a href="https://www.google.com/maps/dir/?api=1&destination=${q}" target="_blank" rel="noopener" class="btn btn-secondary">Itinéraire</a><a href="tel:${B.phoneTel}" class="btn btn-primary">${iconSvg.phone} ${B.phoneDisplay}</a></div>
+</div>
+</div></section>`;
+}
+
+function footer(opts = {}) {
+  const mapHtml = opts.skipMap ? '' : mapSection();
+  return `${mapHtml}<footer>
 <div class="container">
 <div class="footer-grid">
 <div class="footer-col">
@@ -390,6 +408,17 @@ ${TESTIMONIALS.map(t => `<div class="testimonial-card">
 </div></section>`;
 }
 
+function googleReviewsSection() {
+  return `<section class="testimonials" id="google-reviews-section"><div class="container">
+<h2 class="section-title">Avis Google de nos clients</h2>
+<p class="section-subtitle">Avis 100% authentiques vérifiés par Google</p>
+<div id="google-reviews">
+<div class="greviews"><div class="greviews-header"><div class="greviews-brand"><div><div class="greviews-title">Chargement des avis Google...</div></div></div></div></div>
+</div>
+</div></section>
+<script src="/js/reviews.js" defer></script>`;
+}
+
 function brandsSection() {
   return `<section class="brands"><div class="container">
 <p class="brands-title">Marques de confiance que nous installons</p>
@@ -500,7 +529,7 @@ ${CITIES.map(c => `<a href="/chauffagiste-${c.slug}.html" class="city-link">${ic
 <div style="text-align:center;margin-top:2rem;"><a href="/zone-intervention.html" class="btn btn-secondary">Voir toutes les zones desservies ${iconSvg.arrow}</a></div>
 </div></section>
 
-${testimonialsSection()}
+${googleReviewsSection()}
 
 ${faqSection(FAQS.slice(0, 5))}
 
@@ -744,8 +773,8 @@ ${ctaBanner()}
 
 module.exports = {
   B, NAV_LINKS, SERVICES, CITIES, FAQS, TESTIMONIALS, BRANDS,
-  esc, iconSvg, head, topbar, nav, breadcrumb, ctaBanner, footer,
-  contactForm, faqSection, testimonialsSection, brandsSection, featuresSection,
+  esc, iconSvg, head, topbar, nav, breadcrumb, ctaBanner, footer, mapSection,
+  contactForm, faqSection, testimonialsSection, googleReviewsSection, brandsSection, featuresSection,
   writeHtml,
   genHomepage, genAPropos, genPrestations, genServicePage, genVillePage,
 };
