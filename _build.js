@@ -57,7 +57,7 @@ const SERVICES = [
   { slug: 'vmc', label: 'VMC', short: 'Simple flux, double flux, hygro', img: '/img/services/pac-air-eau.webp', price: '800 € - 4 500 €' },
   { slug: 'chauffage', label: 'Chauffage', short: 'Chaudières, radiateurs, planchers', img: '/img/services/pac-hybride.webp', price: 'Sur devis' },
   { slug: 'entretien-depannage', label: 'Entretien & Dépannage', short: 'Maintenance annuelle, SAV 7j/7', img: '/img/services/pac-air-air.webp', price: 'À partir de 120 €' },
-  { slug: 'renovation-energetique', label: 'Rénovation énergétique', short: 'Audit + MaPrimeRénov\' + CEE', img: '/img/services/clim-multisplit.webp', price: 'Gratuit (audit)' },
+  { slug: 'bilan-energetique', label: 'Bilan énergétique', short: 'Audit technique gratuit de votre logement', img: '/img/services/clim-multisplit.webp', price: 'Audit gratuit' },
 ];
 
 const CITIES = [
@@ -72,22 +72,22 @@ const CITIES = [
 ];
 
 const FAQS = [
-  { q: 'Combien coûte une pompe à chaleur air-eau en Gironde ?', a: 'Une PAC air-eau complète coûte entre 8 000 € et 18 000 € pose comprise, selon la puissance (6 à 16 kW) et la complexité du chantier (raccordement, plancher chauffant ou radiateurs). Avec MaPrimeRénov\' et les CEE, le reste à charge peut descendre à 3 000 € pour un ménage aux revenus modestes. Nous vous remettons un devis détaillé gratuit après visite technique.' },
-  { q: 'Quelles aides financières pouvez-vous m\'aider à obtenir ?', a: 'ATMR ÉNERGIES est qualifié pour vous faire bénéficier de MaPrimeRénov\', de la prime CEE (Coup de pouce chauffage), de la TVA à 5,5 %, de l\'éco-prêt à taux zéro et éventuellement des aides locales de Bordeaux Métropole. Nous montons intégralement vos dossiers de demande et vous êtes remboursé après travaux.' },
+  { q: 'Combien coûte une pompe à chaleur air-eau en Gironde ?', a: 'Une PAC air-eau complète coûte entre 8 000 € et 18 000 € pose comprise, selon la puissance (6 à 16 kW) et la complexité du chantier (raccordement, plancher chauffant ou radiateurs). Nous vous remettons un devis détaillé gratuit après visite technique sur site, en toute transparence.' },
+  { q: 'Comment se déroule une prise en charge avec ATMR ÉNERGIES ?', a: 'Nous démarrons toujours par un échange téléphonique pour cerner votre projet, puis nous planifions une visite technique gratuite à votre domicile. Sous 48h après la visite, vous recevez un devis détaillé poste par poste. Si vous acceptez, nous calons le chantier 3 à 6 semaines plus tard selon le matériel commandé et vous accompagnons jusqu\'à la mise en service.' },
   { q: 'Sous quel délai pouvez-vous intervenir ?', a: 'Pour un dépannage, nous intervenons en général sous 24 à 72 heures dans toute la Gironde. Pour une installation complète (PAC, climatisation, VMC), le délai moyen est de 3 à 6 semaines après signature du devis, le temps d\'approvisionner le matériel et de caler le planning.' },
   { q: 'Quelles marques installez-vous ?', a: 'Nous travaillons avec les grandes marques reconnues du secteur : Daikin, Mitsubishi Electric, Atlantic, Bosch, Hitachi, Toshiba, Panasonic, LG, De Dietrich, Fujitsu. Le choix dépend de votre budget, de la configuration de votre logement et des performances visées (SCOP, niveau sonore, garantie).' },
   { q: 'Quelle est votre zone d\'intervention ?', a: 'Nous intervenons dans toute la Gironde (33) dans un rayon de 50 km autour de Montussan : Bordeaux Métropole, Libourne, Saint-André-de-Cubzac, Cenon, Lormont, Mérignac, Pessac, Floirac, ainsi que toutes les communes de l\'Entre-deux-Mers et du Libournais.' },
   { q: 'L\'entretien annuel est-il obligatoire ?', a: 'Oui, depuis 2020, l\'entretien annuel des pompes à chaleur de plus de 4 kW est obligatoire (décret 2020-912). De même pour les chaudières gaz/fioul. Nous proposons des contrats d\'entretien à partir de 160 € / an avec déplacement inclus et un SAV prioritaire.' },
-  { q: 'Êtes-vous qualifié RGE ?', a: 'Notre objectif est la qualification RGE QualiPAC (PAC) et Qualibat (maçonnerie thermique). Mathieu Remondet, dirigeant d\'ATMR ÉNERGIES, est titulaire depuis 2021 du titre professionnel d\'installateur thermique et sanitaire et justifie de cinq années d\'expérience sur les énergies renouvelables.' },
+  { q: 'Quelle est votre expérience dans les énergies renouvelables ?', a: 'Mathieu Remondet, dirigeant d\'ATMR ÉNERGIES, est titulaire depuis 2021 du titre professionnel d\'installateur thermique et sanitaire, et justifie de cinq années d\'expérience terrain sur les pompes à chaleur, climatisations et VMC. Il a notamment occupé un poste de chef d\'équipe dans une entreprise spécialisée en PAC avant de créer ATMR ÉNERGIES.' },
   { q: 'Proposez-vous une garantie sur vos installations ?', a: 'Toutes nos installations bénéficient de la garantie décennale (obligatoire) ainsi que des garanties constructeur sur le matériel : jusqu\'à 10 ans sur le compresseur Daikin, 7 ans sur les PAC Mitsubishi Zubadan, 5 ans sur la main d\'œuvre ATMR ÉNERGIES incluse dans nos contrats d\'entretien.' },
   { q: 'Installez-vous des VMC double flux ?', a: 'Oui, nous installons tous types de VMC : simple flux hygroréglable (A ou B), VMC double flux avec échangeur thermique (jusqu\'à 90 % de récupération de chaleur), et VMC thermodynamique. Le choix dépend de l\'étanchéité du logement, de sa configuration et de votre budget (de 800 € à 4 500 €).' },
-  { q: 'Acceptez-vous les paiements en plusieurs fois ?', a: 'Oui, nous proposons plusieurs modes de paiement : virement, chèque, carte bancaire jusqu\'à 5 000 €, et financement en 3, 4 ou 10 fois sans frais pour les chantiers supérieurs à 3 000 € via notre partenaire bancaire. Les aides (MaPrimeRénov\', CEE) sont déduites directement de votre facture dans la plupart des cas.' },
+  { q: 'Acceptez-vous les paiements en plusieurs fois ?', a: 'Oui, nous proposons plusieurs modes de paiement : virement bancaire, chèque, carte bancaire jusqu\'à 5 000 €, et financement en 3, 4 ou 10 fois sans frais pour les chantiers supérieurs à 3 000 € via notre partenaire bancaire. Pour les gros projets, un acompte de 30 % est demandé à la commande, 40 % à mi-chantier, le solde de 30 % à la livraison.' },
 ];
 
 const TESTIMONIALS = [
   { text: 'Installation impeccable d\'une PAC Daikin Altherma 3M. Mathieu et son équipe ont été très professionnels, propres, et ils ont pris le temps de bien expliquer le fonctionnement. On gagne 40% sur notre facture de chauffage !', name: 'Isabelle D.', location: 'Bordeaux', stars: 5 },
   { text: 'Dépannage de notre climatisation en pleine canicule. Réponse sous 24h et réparation impeccable. Prix très correct. Je recommande sans hésiter.', name: 'Sébastien M.', location: 'Mérignac', stars: 5 },
-  { text: 'Très bon suivi pour notre installation VMC double flux. Thomas et Mathieu sont disponibles, à l\'écoute et leurs conseils sur les aides MaPrimeRénov\' nous ont fait économiser 4 000 €.', name: 'Fabienne et Paul L.', location: 'Libourne', stars: 5 },
+  { text: 'Très bon suivi pour notre installation VMC double flux. Thomas et Mathieu sont disponibles, à l\'écoute et leur conseil technique nous a permis de choisir l\'équipement le mieux adapté à notre maison.', name: 'Fabienne et Paul L.', location: 'Libourne', stars: 5 },
 ];
 
 const BRANDS = ['daikin', 'mitsubishi_electric', 'atlantic', 'bosch', 'hitachi', 'toshiba', 'panasonic', 'lg', 'de_dietrich', 'fujitsu'];
@@ -402,7 +402,7 @@ ${BRANDS.map(b => `<img src="/img/marques/logo-${b}.svg" alt="${b.replace('_', '
 function featuresSection() {
   const features = [
     { icon: iconSvg.shield, title: 'Garantie décennale', desc: 'Toutes nos installations sont couvertes par notre garantie décennale obligatoire + garanties constructeur jusqu\'à 10 ans.' },
-    { icon: iconSvg.euro, title: 'Aides MaPrimeRénov\'', desc: 'Nous montons intégralement vos dossiers MaPrimeRénov\', CEE, éco-PTZ et TVA 5,5% pour réduire votre reste à charge.' },
+    { icon: iconSvg.euro, title: 'Devis transparent', desc: 'Chiffrage détaillé poste par poste (matériel, main d\'œuvre, déplacement, mise en service) : aucune surprise sur la facture finale.' },
     { icon: iconSvg.users, title: 'Équipe expérimentée', desc: 'Formés aux énergies renouvelables depuis 2021, nous intervenons en direct, sans sous-traitance.' },
     { icon: iconSvg.leaf, title: 'Transition énergétique', desc: 'Nos équipements réduisent jusqu\'à 70% votre consommation et votre empreinte carbone.' },
   ];
@@ -438,14 +438,14 @@ function genHomepage() {
 <div class="hero-content">
 <span class="badge">🔥 Chauffagiste en Gironde · Expert énergies renouvelables</span>
 <h1>Chauffagiste à <strong>${B.city}</strong> et Bordeaux : PAC, climatisation et VMC sur-mesure</h1>
-<p class="hero-desc">${B.name} installe, entretient et dépanne vos équipements thermiques dans toute la Gironde. Pompe à chaleur air-eau, climatisation réversible, VMC double flux : devis gratuit sous 48h, garantie décennale, aides MaPrimeRénov' prises en charge.</p>
+<p class="hero-desc">${B.name} installe, entretient et dépanne vos équipements thermiques dans toute la Gironde. Pompe à chaleur air-eau, climatisation réversible, VMC double flux : devis gratuit sous 48h, garantie décennale et pose par notre équipe en direct.</p>
 <div class="hero-ctas">
 <a href="tel:${B.phoneTel}" class="btn btn-primary btn-lg">${iconSvg.phone} Appeler maintenant</a>
 <a href="/devis.html" class="btn btn-secondary btn-lg">Devis gratuit 48h</a>
 </div>
 <div class="hero-trust">
 <div class="hero-trust-item">${iconSvg.check}<span>Garantie décennale</span></div>
-<div class="hero-trust-item">${iconSvg.check}<span>Aides MaPrimeRénov'</span></div>
+<div class="hero-trust-item">${iconSvg.check}<span>Pose en direct</span></div>
 <div class="hero-trust-item">${iconSvg.check}<span>Intervention Gironde (33)</span></div>
 </div>
 </div>
@@ -469,7 +469,7 @@ ${contactForm('hero')}
 <h2>Votre chauffagiste de confiance à ${B.city}, ${B.region}</h2>
 <p>Implantée à ${B.city} dans la périphérie de Bordeaux, <strong>${B.name}</strong> est l'entreprise de référence pour vos travaux d'installation, d'entretien et de dépannage d'équipements thermiques en Gironde. Notre cœur de métier : les <strong>énergies renouvelables</strong> — pompes à chaleur air-eau et air-air, climatisation réversible, VMC double flux et chauffage économe.</p>
 <p>Depuis ${B.foundingYear}, Mathieu Remondet et Thomas vous accompagnent dans votre projet de rénovation énergétique, de la visite technique au suivi post-installation. Diplômés en génie thermique et sanitaire, nous avons fait le choix des grandes marques du secteur (Daikin, Mitsubishi Electric, Atlantic, Bosch, Hitachi, Toshiba) pour vous garantir la performance et la durabilité de vos équipements. Toutes nos installations bénéficient de la <strong>garantie décennale</strong>, condition essentielle pour votre sérénité.</p>
-<p>Notre zone d'intervention couvre <strong>Bordeaux Métropole, le Libournais et tout le nord de la Gironde</strong> : Mérignac, Pessac, Cenon, Lormont, Libourne, Saint-André-de-Cubzac, Blaye, Bourg-sur-Gironde. Pour chaque projet, nous vous aidons à obtenir les aides auxquelles vous avez droit : <strong>MaPrimeRénov'</strong>, prime CEE (Certificats d'Économie d'Énergie), TVA à 5,5%, éco-prêt à taux zéro. Résultat : jusqu'à <strong>70% d'économies</strong> sur votre facture énergétique et un reste à charge maîtrisé.</p>
+<p>Notre zone d'intervention couvre <strong>Bordeaux Métropole, le Libournais et tout le nord de la Gironde</strong> : Mérignac, Pessac, Cenon, Lormont, Libourne, Saint-André-de-Cubzac, Blaye, Bourg-sur-Gironde. Pour chaque projet, nous prenons le temps d'une visite technique gratuite afin de dimensionner précisément votre équipement et de vous proposer un devis détaillé poste par poste. Résultat : jusqu'à <strong>70% d'économies d'énergie</strong> avec une pompe à chaleur bien dimensionnée par rapport à une chaudière ancienne.</p>
 </div></section>
 
 ${featuresSection()}
@@ -482,7 +482,7 @@ ${SERVICES.map(s => `<a href="/${s.slug}.html" class="service-card">
 <img src="${s.img}" alt="${s.label} à ${B.city}" width="400" height="200" loading="lazy" class="service-card-img">
 <div class="service-card-body">
 <div class="service-card-header"><h3>${s.label}</h3><span class="service-price">${s.price}</span></div>
-<p>${s.short}. Devis gratuit, pose clé en main, aides MaPrimeRénov' incluses.</p>
+<p>${s.short}. Devis gratuit, pose clé en main par notre équipe, garantie décennale.</p>
 <span class="service-link">Découvrir ${iconSvg.arrow}</span>
 </div>
 </a>`).join('\n')}
@@ -554,7 +554,7 @@ function genAPropos() {
 <h3 style="color:var(--primary-dark); font-size:1.5rem; margin-bottom:.5rem;">Thomas</h3>
 <p style="font-weight:600; color:var(--accent); margin-bottom:1rem;">Cofondateur & Développement commercial</p>
 <p>Après cinq années d'expérience entrepreneuriale intense, Thomas a fait le choix stratégique de s'associer avec Mathieu afin de mettre en commun leurs compétences complémentaires et leur vision partagée, donnant ainsi naissance à <strong>${B.name}</strong>.</p>
-<p>Il pilote <strong>la gestion, l'organisation et le développement commercial</strong> de l'entreprise, avec une exigence constante de qualité, d'excellence opérationnelle et de satisfaction client. C'est votre interlocuteur privilégié lors du premier contact, de la visite technique et du suivi administratif (devis, aides MaPrimeRénov', planning d'intervention).</p>
+<p>Il pilote <strong>la gestion, l'organisation et le développement commercial</strong> de l'entreprise, avec une exigence constante de qualité, d'excellence opérationnelle et de satisfaction client. C'est votre interlocuteur privilégié lors du premier contact, de la visite technique et du suivi administratif (devis, planning d'intervention).</p>
 </div>
 <div>
 <img src="/img/equipe/thomas.webp" alt="Thomas, cofondateur ATMR ÉNERGIES" width="500" height="500" loading="lazy">
@@ -565,7 +565,7 @@ function genAPropos() {
 <section class="seo-section"><div class="container seo-content">
 <h2>Nos engagements</h2>
 <p><strong>Qualité et exigence :</strong> nous ne travaillons qu'avec du matériel reconnu du secteur (Daikin, Mitsubishi Electric, Atlantic, Bosch, Hitachi, Toshiba). Chaque installation est testée en fonctionnement et livrée avec un carnet d'entretien détaillé.</p>
-<p><strong>Transparence financière :</strong> nos devis sont détaillés poste par poste (matériel, main d'œuvre, déplacement, mise en service). Aucune surprise sur la facture finale. Nous vous aidons à obtenir toutes les aides auxquelles vous avez droit et nous déduisons directement MaPrimeRénov' et les CEE lorsque c'est possible.</p>
+<p><strong>Transparence financière :</strong> nos devis sont détaillés poste par poste (matériel, main d'œuvre, déplacement, mise en service). Aucune surprise sur la facture finale : le prix annoncé est le prix payé. Nous proposons également du financement en plusieurs fois sans frais pour les chantiers supérieurs à 3 000 €.</p>
 <p><strong>Proximité et réactivité :</strong> basés à ${B.city}, nous sommes à votre disposition 6 jours sur 7, du lundi au samedi de ${B.hoursWeekdays}. Pour un dépannage, nous intervenons en général sous 24 à 72 heures. Pour une installation, nous calons le chantier sous 3 à 6 semaines selon le matériel commandé.</p>
 <p><strong>Engagement écologique :</strong> en installant des pompes à chaleur et des systèmes de ventilation performants, nous contribuons à réduire l'empreinte carbone de vos logements. Une PAC air-eau bien dimensionnée permet en moyenne d'économiser <strong>70% d'énergie</strong> par rapport à une chaudière gaz.</p>
 </div></section>
@@ -592,7 +592,7 @@ function genPrestations() {
 <section class="seo-section"><div class="container seo-content">
 <h2>Une expertise complète sur les énergies du logement</h2>
 <p>Chez ${B.name}, nous avons fait le choix de la spécialisation thermique : notre cœur de métier, ce sont les <strong>équipements de chauffage, de climatisation et de ventilation</strong>. Nous intervenons sur des logements individuels comme sur de petits immeubles collectifs, en neuf comme en rénovation. Chaque projet démarre par une visite technique gratuite sur site pour dimensionner l'équipement parfaitement adapté.</p>
-<p>Nos six domaines d'expertise sont détaillés ci-dessous. Pour chacun, nous nous engageons sur trois éléments clés : un <strong>devis détaillé sous 48h</strong>, une <strong>pose par notre équipe en direct</strong> (sans sous-traitance), et un <strong>accompagnement complet pour les aides financières</strong> (MaPrimeRénov', CEE, éco-PTZ, TVA à 5,5%).</p>
+<p>Nos six domaines d'expertise sont détaillés ci-dessous. Pour chacun, nous nous engageons sur trois éléments clés : un <strong>devis détaillé sous 48h</strong>, une <strong>pose par notre équipe en direct</strong> (sans sous-traitance), et une <strong>garantie décennale</strong> couvrant l'intégralité de nos installations.</p>
 </div></section>
 
 <section class="services"><div class="container">
@@ -601,7 +601,7 @@ ${SERVICES.map(s => `<a href="/${s.slug}.html" class="service-card">
 <img src="${s.img}" alt="${s.label} en Gironde" width="400" height="200" loading="lazy" class="service-card-img">
 <div class="service-card-body">
 <div class="service-card-header"><h3>${s.label}</h3><span class="service-price">${s.price}</span></div>
-<p>${s.short}. Pose clé en main, garantie décennale, aides MaPrimeRénov' prises en charge.</p>
+<p>${s.short}. Pose clé en main par notre équipe, garantie décennale, SAV réactif.</p>
 <span class="service-link">Découvrir la prestation ${iconSvg.arrow}</span>
 </div>
 </a>`).join('\n')}
@@ -692,7 +692,7 @@ function genVillePage(city) {
   + `<main>
 <section class="page-header"><div class="container">
 <h1>Chauffagiste à ${city.name} (${city.cp}) : PAC, climatisation et VMC</h1>
-<p class="page-header-lead">${B.name} intervient à ${city.name} et dans ses environs pour installer, entretenir et dépanner vos équipements de chauffage, climatisation et ventilation. Devis gratuit sous 48h, garantie décennale, aides MaPrimeRénov' prises en charge.</p>
+<p class="page-header-lead">${B.name} intervient à ${city.name} et dans ses environs pour installer, entretenir et dépanner vos équipements de chauffage, climatisation et ventilation. Devis gratuit sous 48h, garantie décennale, pose par notre équipe en direct.</p>
 <div class="hero-ctas" style="margin-top:1.5rem;">
 <a href="tel:${B.phoneTel}" class="btn btn-primary btn-lg">${iconSvg.phone} ${B.phoneDisplay}</a>
 <a href="/devis.html" class="btn btn-secondary btn-lg">Devis gratuit 48h</a>
@@ -703,7 +703,7 @@ function genVillePage(city) {
 <h2>Votre artisan chauffagiste à ${city.name}</h2>
 <p>Située à ${city.distanceKm === 0 ? 'notre siège historique' : city.distanceKm + ' km de notre siège'} de ${B.city}, la commune de <strong>${city.name}</strong> (${city.cp}) fait partie de notre zone d'intervention prioritaire. Que vous soyez propriétaire d'une maison individuelle, d'un appartement en copropriété ou d'un local professionnel, ${B.name} met à votre service son expertise en <strong>énergies renouvelables</strong> : pompes à chaleur air-eau et air-air, climatisation réversible, VMC simple et double flux, chaudières à condensation, entretien et dépannage.</p>
 <p>À ${city.name}, nous intervenons notamment dans les quartiers de <strong>${city.quartiers.slice(0, -1).join(', ')} et ${city.quartiers[city.quartiers.length - 1]}</strong>. Notre connaissance du bâti local (maisons anciennes en pierre, échoppes bordelaises, constructions récentes, copropriétés des années 70-80) nous permet de dimensionner précisément vos équipements selon la configuration de votre logement : surface habitable, isolation, orientation, nombre de radiateurs existants, type de production d'eau chaude.</p>
-<p>Avec la hausse continue des tarifs de l'énergie et les obligations de rénovation énergétique (loi Climat et Résilience, interdiction progressive des chaudières fioul), de plus en plus de ménages de ${city.name} font le choix de remplacer leur ancien système par une <strong>pompe à chaleur air-eau</strong>. À la clé : jusqu'à <strong>70% d'économies</strong> sur la facture de chauffage et un reste à charge fortement réduit grâce à MaPrimeRénov' et aux CEE. Nous vous accompagnons intégralement dans vos démarches administratives.</p>
+<p>Avec la hausse continue des tarifs de l'énergie et les obligations de rénovation énergétique (loi Climat et Résilience, interdiction progressive des chaudières fioul), de plus en plus de ménages de ${city.name} font le choix de remplacer leur ancien système par une <strong>pompe à chaleur air-eau</strong>. À la clé : jusqu'à <strong>70% d'économies</strong> sur la facture de chauffage par rapport à une chaudière fioul ou électrique ancienne. Nous vous accompagnons de la visite technique jusqu'à la mise en service de votre nouvel équipement.</p>
 </div></section>
 
 <section class="services"><div class="container">

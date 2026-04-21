@@ -13,9 +13,9 @@ const { B, SERVICES, CITIES, FAQS, iconSvg, head, topbar, nav, breadcrumb, ctaBa
 const SERVICE_PAGES = {
   'pompe-a-chaleur': {
     title: `Pompe à chaleur à ${B.city} et Bordeaux | Installation PAC Air-Eau & Air-Air — ${B.name}`,
-    description: `Installation de pompe à chaleur en Gironde par ${B.name}. PAC air-eau, air-air, hybride : devis gratuit sous 48h, aides MaPrimeRénov', garantie décennale. Tél : ${B.phoneDisplay}`,
+    description: `Installation de pompe à chaleur en Gironde par ${B.name}. PAC air-eau, air-air, hybride : devis gratuit sous 48h, garantie décennale, pose en direct. Tél : ${B.phoneDisplay}`,
     h1: `Installation de pompe à chaleur à ${B.city} et en Gironde`,
-    lead: `PAC air-eau, air-air ou hybride : ATMR ÉNERGIES dimensionne et installe la pompe à chaleur parfaitement adaptée à votre logement, avec prise en charge complète de MaPrimeRénov' et des CEE.`,
+    lead: `PAC air-eau, air-air ou hybride : ATMR ÉNERGIES dimensionne et installe la pompe à chaleur parfaitement adaptée à votre logement, en direct, sans sous-traitance et avec garantie décennale.`,
     body: `
 <h2>Pompe à chaleur en Gironde : jusqu'à 70% d'économies d'énergie</h2>
 <p>La <strong>pompe à chaleur</strong> (PAC) est aujourd'hui le moyen le plus efficace de chauffer un logement en France. Elle capte l'énergie présente dans l'air extérieur (ou dans l'eau, le sol, selon le type) pour la restituer à l'intérieur sous forme de chaleur. Son principe : avec 1 kWh d'électricité consommé, une PAC moderne produit entre 3 et 5 kWh de chaleur — ce rendement, appelé <strong>COP (Coefficient de Performance)</strong>, est 3 à 5 fois supérieur à celui d'un chauffage électrique classique.</p>
@@ -35,21 +35,13 @@ const SERVICE_PAGES = {
 
 <h2>Combien coûte une pompe à chaleur en Gironde ?</h2>
 <p>Une installation complète de <strong>PAC air-eau</strong> coûte typiquement entre <strong>8 000 € et 18 000 € TTC pose comprise</strong>, selon la puissance (6 à 16 kW), le modèle, le type d'émetteurs (plancher chauffant, radiateurs basse température, radiateurs classiques) et la complexité du chantier (raccordement électrique, passage de conduits, dépose de l'ancienne chaudière). Pour une <strong>PAC air-air</strong>, comptez entre 1 500 € (monosplit simple) et 6 000 € (multisplit 3 à 5 pièces).</p>
-<p>Grâce aux aides cumulables, le reste à charge peut descendre à <strong>3 000 € à 8 000 €</strong> pour une PAC air-eau :</p>
-<ul>
-<li><strong>MaPrimeRénov'</strong> : 2 000 € à 5 000 € selon vos revenus (barème 2026)</li>
-<li><strong>Prime CEE "Coup de pouce chauffage"</strong> : 2 500 € à 5 000 € pour le remplacement d'une chaudière fioul ou gaz</li>
-<li><strong>TVA à 5,5%</strong> sur le matériel et la main d'œuvre (au lieu de 20%)</li>
-<li><strong>Éco-prêt à taux zéro</strong> jusqu'à 50 000 € pour le bouquet de travaux</li>
-<li>Aides locales éventuelles de Bordeaux Métropole et du département de la Gironde</li>
-</ul>
+<p>Pour les chantiers supérieurs à 3 000 €, nous proposons un <strong>financement en 3, 4 ou 10 fois sans frais</strong> via notre partenaire bancaire. L'acompte de 30% est demandé à la commande, 40% à mi-chantier et le solde de 30% à la livraison.</p>
 
-<h2>Notre méthode en 5 étapes</h2>
+<h2>Notre méthode en 4 étapes</h2>
 <p><strong>1. Visite technique gratuite sur site :</strong> nous prenons les cotes de votre logement, étudions l'isolation, la configuration du circuit de chauffage existant et les contraintes d'installation (emplacement extérieur, bruit pour le voisinage, évacuation des condensats).</p>
-<p><strong>2. Étude thermique et devis détaillé sous 48h :</strong> nous dimensionnons précisément la puissance nécessaire (via un calcul de déperditions), comparons 2 à 3 modèles de marques différentes, et vous remettons un devis détaillé poste par poste avec simulation des aides.</p>
-<p><strong>3. Montage des dossiers d'aides :</strong> nous constituons et déposons pour vous MaPrimeRénov', la prime CEE et préparons votre facture avec TVA 5,5%. Vous n'avez rien à faire — sauf signer les documents.</p>
-<p><strong>4. Installation par nos équipes en direct :</strong> 1 à 3 jours de chantier selon la complexité. Nous effectuons la dépose de l'ancien équipement, la pose de la nouvelle PAC, les raccordements hydrauliques et électriques, l'équilibrage du circuit et la mise en service complète.</p>
-<p><strong>5. Formation à l'usage + SAV :</strong> nous prenons le temps de vous expliquer le fonctionnement (réglages, modes, entretien courant) et vous remettons le carnet d'entretien. Contrats de maintenance annuelle disponibles à partir de 160 €.</p>
+<p><strong>2. Étude thermique et devis détaillé sous 48h :</strong> nous dimensionnons précisément la puissance nécessaire (via un calcul de déperditions), comparons 2 à 3 modèles de marques différentes, et vous remettons un devis détaillé poste par poste sans surprise.</p>
+<p><strong>3. Installation par nos équipes en direct :</strong> 1 à 3 jours de chantier selon la complexité. Nous effectuons la dépose de l'ancien équipement, la pose de la nouvelle PAC, les raccordements hydrauliques et électriques, l'équilibrage du circuit et la mise en service complète.</p>
+<p><strong>4. Formation à l'usage + SAV :</strong> nous prenons le temps de vous expliquer le fonctionnement (réglages, modes, entretien courant) et vous remettons le carnet d'entretien. Contrats de maintenance annuelle disponibles à partir de 160 €.</p>
 
 <h2>Zones d'intervention pour l'installation de pompes à chaleur</h2>
 <p>Nous installons des pompes à chaleur dans toute la <strong>Gironde</strong> dans un rayon de ${B.zoneRadiusKm} km autour de ${B.city} : Bordeaux Métropole, Mérignac, Pessac, Libourne, Saint-André-de-Cubzac, Cenon, Lormont, Blaye, Bourg-sur-Gironde, l'Entre-deux-Mers, le Médoc, le Cubzaguais et le Libournais.</p>
@@ -79,13 +71,8 @@ const SERVICE_PAGES = {
 <p>La <strong>climatisation gainable</strong> est la solution haut de gamme : une <strong>unité intérieure dissimulée dans un faux-plafond</strong> diffuse l'air via un réseau de gaines et des bouches de soufflage discrètes dans chaque pièce. Aucune unité apparente dans les pièces de vie, confort thermique homogène, silence absolu. Budget : <strong>6 000 € à 12 000 €</strong> selon la surface et la complexité du réseau aéraulique.</p>
 <p>Idéale dans les <strong>constructions neuves</strong> ou en <strong>rénovation lourde</strong> (combles, extensions avec faux-plafonds). Nous réalisons l'étude aéraulique (débits d'air, pertes de charge, positionnement des bouches) pour garantir un fonctionnement optimal et silencieux (<25 dB dans les pièces).</p>
 
-<h2>Aides financières pour la climatisation réversible</h2>
-<p>Contrairement aux PAC air-eau, la <strong>climatisation réversible n'est pas éligible à MaPrimeRénov'</strong> (sauf dans certains cas spécifiques de résidence principale en zone non raccordée au gaz). En revanche, elle bénéficie de :</p>
-<ul>
-<li><strong>TVA à 10%</strong> sur le matériel et la main d'œuvre (logement de plus de 2 ans)</li>
-<li><strong>Crédit d'impôt transition énergétique (CITE)</strong> sous conditions</li>
-<li><strong>Éco-prêt à taux zéro</strong> dans le cadre d'une rénovation globale</li>
-</ul>
+<h2>Modalités financières et TVA</h2>
+<p>La climatisation réversible pour un logement de plus de 2 ans bénéficie de la <strong>TVA à 10%</strong> sur le matériel et la main d'œuvre, au lieu du taux normal de 20%. Pour les chantiers supérieurs à 3 000 €, nous proposons également du <strong>financement en 3, 4 ou 10 fois sans frais</strong> via notre partenaire bancaire.</p>
 
 <h2>Installation clé en main par ATMR ÉNERGIES</h2>
 <p>Nous réalisons l'intégralité du chantier en direct, sans sous-traitance : visite technique, étude thermique, commande du matériel (marques partenaires Daikin, Mitsubishi, Toshiba, LG, Panasonic), dépose de l'ancien système si nécessaire, pose des unités intérieures et extérieures, liaisons frigorifiques cuivre brasées et isolées, mise sous vide et charge du circuit, mise en service et <strong>attestation d'aptitude à la manipulation des fluides frigorigènes (F-Gas)</strong>. Tout est prêt en 1 à 3 jours selon le projet.</p>
@@ -121,9 +108,6 @@ const SERVICE_PAGES = {
 <h2>Maintenance obligatoire d'une VMC</h2>
 <p>L'entretien annuel d'une VMC est fortement recommandé pour maintenir son rendement et garantir la qualité de l'air. Nous proposons un <strong>contrat d'entretien à partir de 130 € / an</strong> comprenant : nettoyage des bouches d'extraction, dépoussiérage du caisson et du moteur, remplacement des filtres (pour les VMC double flux), contrôle du débit d'air et de l'étanchéité du réseau. Sans cet entretien, le rendement chute rapidement (filtres encrassés = débit réduit = humidité qui repart).</p>
 
-<h2>Aides financières pour l'installation d'une VMC</h2>
-<p>La <strong>VMC double flux</strong> est éligible à <strong>MaPrimeRénov'</strong> (1 500 € à 4 000 € selon les revenus) et à la prime CEE quand elle s'inscrit dans un bouquet de travaux d'isolation. La VMC simple flux n'est éligible qu'à la TVA à 5,5% dans le cadre d'une rénovation énergétique globale.</p>
-
 <h2>Notre savoir-faire en ventilation</h2>
 <p>Nous concevons intégralement le réseau aéraulique (<strong>dimensionnement des gaines, calcul des pertes de charge, positionnement des bouches</strong>) pour garantir un fonctionnement optimal sur le long terme. Nous utilisons des gaines semi-rigides isolées (meilleure acoustique, moins de pertes de chaleur) et réalisons systématiquement un <strong>équilibrage aéraulique à la mise en service</strong>.</p>
 <p>Nous installons des VMC dans toute la Gironde : Bordeaux, Mérignac, Pessac, Libourne, Saint-André-de-Cubzac et toutes les communes dans un rayon de ${B.zoneRadiusKm} km autour de ${B.city}.</p>
@@ -155,9 +139,6 @@ const SERVICE_PAGES = {
 <h2>Entretien annuel obligatoire</h2>
 <p>Depuis 2009, l'<strong>entretien annuel</strong> est obligatoire pour toutes les chaudières de 4 à 400 kW (décret n° 2009-649). Il doit être réalisé par un professionnel qualifié et donne lieu à une attestation d'entretien que votre assureur peut réclamer en cas de sinistre.</p>
 <p>Nous proposons des <strong>contrats d'entretien à partir de 160 € / an</strong> pour votre chaudière (gaz, fioul, bois), avec : contrôle de la combustion, nettoyage du brûleur, vérification des organes de sécurité, réglage de la puissance, purge du circuit, rapport détaillé et attestation d'entretien. Contrat prioritaire SAV (intervention sous 24 à 48h en hiver) en option.</p>
-
-<h2>Aides financières pour votre chauffage</h2>
-<p>La plupart de nos prestations sont éligibles aux aides de l'État. Nous nous occupons de toutes les démarches pour vous : <strong>MaPrimeRénov'</strong> (remplacement chaudière fioul/gaz par chaudière à condensation THPE ou PAC), <strong>CEE Coup de pouce chauffage</strong>, <strong>TVA à 5,5%</strong>, <strong>éco-PTZ</strong>, aides locales. Reste à charge en général réduit de 30 à 60%.</p>
 
 <h2>Nos interventions en Gironde</h2>
 <p>Nous installons et dépannons des systèmes de chauffage dans toute la Gironde : Bordeaux, Mérignac, Pessac, Libourne, Saint-André-de-Cubzac, Cenon, Lormont, ${B.city} et toutes les communes dans un rayon de ${B.zoneRadiusKm} km.</p>
@@ -216,52 +197,46 @@ const SERVICE_PAGES = {
 `,
     faqs: [FAQS[5], FAQS[2], FAQS[9], FAQS[6], FAQS[7]],
   },
-  'renovation-energetique': {
-    title: `Rénovation énergétique à ${B.city} et Bordeaux — ${B.name}`,
-    description: `Audit énergétique gratuit et rénovation globale en Gironde : isolation, PAC, VMC, chaudière. MaPrimeRénov', CEE, éco-PTZ cumulés. Tél : ${B.phoneDisplay}`,
-    h1: `Rénovation énergétique à ${B.city} et en Gironde`,
-    lead: `Audit énergétique, bouquet de travaux MaPrimeRénov', accompagnement administratif complet : ATMR ÉNERGIES pilote votre projet de rénovation énergétique de bout en bout.`,
+  'bilan-energetique': {
+    title: `Bilan énergétique gratuit à ${B.city} et Bordeaux — ${B.name}`,
+    description: `Bilan énergétique et conseil technique gratuit en Gironde : diagnostic de votre équipement actuel, dimensionnement PAC / clim / VMC. Tél : ${B.phoneDisplay}`,
+    h1: `Bilan énergétique à ${B.city} et en Gironde`,
+    lead: `Avant d'investir dans une pompe à chaleur ou un nouvel équipement, nous réalisons un bilan technique gratuit de votre logement pour dimensionner la solution la plus pertinente.`,
     body: `
-<h2>La rénovation énergétique : pourquoi et comment ?</h2>
-<p>La <strong>rénovation énergétique</strong> consiste à améliorer les performances thermiques de votre logement pour réduire votre consommation d'énergie (et votre facture), améliorer votre confort d'été comme d'hiver, et valoriser votre bien à la revente. Avec la <strong>loi Climat et Résilience</strong> (2021), les logements classés G puis F sont progressivement interdits à la location (G depuis 2025, F en 2028, E en 2034), ce qui oblige de plus en plus de propriétaires bailleurs à engager des travaux.</p>
-<p>Chez ${B.name}, nous intervenons sur les <strong>systèmes énergétiques</strong> du logement : production de chauffage (PAC, chaudière à condensation), production d'eau chaude sanitaire (ballon thermodynamique), ventilation (VMC double flux), climatisation. Nous travaillons en complément de partenaires spécialistes de l'isolation (murs, toiture, planchers) et des menuiseries (fenêtres, portes) pour des bouquets de travaux complets.</p>
+<h2>Un diagnostic technique préalable offert à chaque projet</h2>
+<p>Avant tout chiffrage, ATMR ÉNERGIES réalise systématiquement une <strong>visite technique gratuite</strong> de votre logement. L'objectif : comprendre précisément votre situation existante (chauffage actuel, type d'émetteurs, isolation visible, contraintes d'installation) pour vous proposer l'équipement le mieux adapté, ni sur-dimensionné ni sous-dimensionné.</p>
+<p>Cette étape est <strong>indispensable pour garantir la performance</strong> de votre future installation. Une pompe à chaleur mal dimensionnée consomme 20 à 30% de plus que prévu et s'use prématurément. Un bilan sérieux en amont évite ce piège et vous permet d'investir sereinement.</p>
 
-<h2>Le diagnostic de performance énergétique (DPE)</h2>
-<p>Le <strong>DPE</strong> est la pièce maîtresse pour engager une rénovation énergétique. Il classe votre logement de A (très performant, < 70 kWh/m²/an) à G (très énergivore, > 420 kWh/m²/an). En Gironde, la majorité des logements anciens (avant 1975) sont classés D, E ou F.</p>
-<p>Les travaux de rénovation énergétique visent à <strong>remonter d'au moins 2 classes</strong> (exemple : passer de F à D) pour bénéficier des aides les plus avantageuses. Un <strong>audit énergétique</strong>, plus poussé que le DPE, identifie les travaux prioritaires et chiffre les gains de chaque scénario. Nous pouvons vous le recommander lors de notre visite technique initiale (gratuite).</p>
+<h2>Ce que nous analysons lors de la visite</h2>
+<ul>
+<li><strong>Enveloppe du bâti</strong> : type de murs (pierre, parpaing, brique), année de construction, isolation visible (combles, murs, sol), qualité des menuiseries (simple/double vitrage, étanchéité à l'air)</li>
+<li><strong>Système de chauffage existant</strong> : type de générateur (chaudière fioul, gaz, électrique, PAC), âge, rendement, type d'émetteurs (radiateurs fonte, acier, plancher chauffant)</li>
+<li><strong>Production d'eau chaude sanitaire</strong> : ballon électrique, chauffe-eau thermodynamique, production mixte intégrée à la chaudière</li>
+<li><strong>Ventilation</strong> : absence de VMC, VMC simple flux autoréglable ou hygroréglable, VMC double flux, grilles d'aération</li>
+<li><strong>Contraintes d'installation</strong> : emplacement du groupe extérieur (façade, jardin, toiture), distance aux chambres voisines pour le niveau sonore, évacuation des condensats, alimentation électrique disponible</li>
+<li><strong>Vos habitudes et attentes</strong> : plages horaires d'occupation, niveau de confort recherché, budget, priorités (économies, silence, esthétique)</li>
+</ul>
 
-<h2>Les aides cumulables en 2026</h2>
-<p>Les aides 2026 permettent des <strong>restes à charge très réduits</strong> pour les ménages aux revenus modestes et très modestes (barèmes Anah). Voici les principales aides cumulables :</p>
-<h3>MaPrimeRénov' Parcours accompagné</h3>
-<p>Pour les <strong>rénovations globales</strong> (2 postes de travaux minimum avec gain énergétique significatif), MaPrimeRénov' peut financer jusqu'à <strong>70% du montant HT</strong> des travaux (plafond 55 000 €), avec un accompagnement obligatoire par un "Mon Accompagnateur Rénov'" certifié.</p>
-<h3>Certificats d'Économie d'Énergie (CEE)</h3>
-<p>Prime versée par les fournisseurs d'énergie (EDF, Engie, Total) pour les travaux d'économie d'énergie. Le dispositif "Coup de pouce chauffage" offre <strong>2 500 à 5 000 €</strong> pour le remplacement d'une chaudière fioul / gaz par une PAC.</p>
-<h3>TVA réduite à 5,5%</h3>
-<p>Sur la main d'œuvre et le matériel, pour les logements de plus de 2 ans et sous conditions de performance énergétique.</p>
-<h3>Éco-prêt à taux zéro (éco-PTZ)</h3>
-<p>Jusqu'à <strong>50 000 €</strong> à taux 0%, sans conditions de ressources, pour financer un bouquet de travaux (15 ans maximum).</p>
-<h3>Chèque énergie et aides locales</h3>
-<p>Chèque énergie annuel (48 € à 277 € selon les revenus), aides de Bordeaux Métropole et du département de la Gironde (à vérifier au cas par cas).</p>
+<h2>Calcul des déperditions thermiques</h2>
+<p>À partir des données collectées lors de la visite, nous réalisons un <strong>calcul des déperditions thermiques</strong> de votre logement. Ce calcul (norme RE 2020 simplifiée) permet de déterminer la puissance de chauffage réellement nécessaire, en kilowatts, pour maintenir votre logement à 19-20°C en continu pendant les périodes les plus froides de l'année.</p>
+<p>Ce dimensionnement rigoureux est <strong>la base d'un bon choix d'équipement</strong> : plus votre bâti est isolé, plus la puissance nécessaire est faible, plus le SCOP (performance saisonnière) de la pompe à chaleur sera élevé, donc plus vous économiserez sur votre facture.</p>
 
-<h2>Notre accompagnement complet</h2>
-<p>ATMR ÉNERGIES vous accompagne à chaque étape de votre projet de rénovation énergétique :</p>
-<ol>
-<li><strong>Visite technique gratuite</strong> et diagnostic préalable de votre logement (isolation visible, système de chauffage existant, ventilation, menuiseries).</li>
-<li><strong>Simulation des aides</strong> avec projection du reste à charge et du retour sur investissement (années).</li>
-<li><strong>Devis détaillé</strong> poste par poste avec 2 à 3 scénarios possibles (selon votre budget et vos priorités).</li>
-<li><strong>Montage des dossiers d'aides</strong> (MaPrimeRénov', CEE, éco-PTZ) — nous nous occupons de toute l'administration.</li>
-<li><strong>Réalisation des travaux</strong> par nos équipes en direct + partenaires de confiance pour l'isolation et les menuiseries.</li>
-<li><strong>Bilan post-travaux</strong> : vérification des gains énergétiques réels, mise à jour du DPE si nécessaire, suivi de la consommation sur la première année.</li>
-</ol>
+<h2>Étude comparative des solutions possibles</h2>
+<p>Une fois la puissance connue, nous vous présentons <strong>2 à 3 scénarios</strong> de solutions techniques avec leurs avantages, inconvénients et tarifs indicatifs. Exemples :</p>
+<ul>
+<li><strong>Scénario A</strong> : PAC air-eau Daikin Altherma 3M sur radiateurs existants</li>
+<li><strong>Scénario B</strong> : PAC air-air multisplit Mitsubishi + chauffe-eau thermodynamique</li>
+<li><strong>Scénario C</strong> : Système hybride PAC + chaudière gaz condensation De Dietrich</li>
+</ul>
+<p>Pour chaque scénario, nous précisons le <strong>gain énergétique prévisionnel</strong>, le retour sur investissement en années, et les contraintes d'installation. Nos devis sont détaillés poste par poste, sans ligne forfaitaire opaque.</p>
 
-<h2>Exemples de bouquets de travaux réussis</h2>
-<p><strong>Maison 120 m² à Mérignac, classée F → C</strong> : remplacement chaudière fioul par PAC air-eau Daikin 11 kW + VMC double flux Atlantic + isolation combles perdus. Coût total : 27 000 € TTC. Aides : MaPrimeRénov' 12 000 € + CEE 4 500 € + TVA 5,5% = reste à charge 10 500 €. Gain énergétique : 68%.</p>
-<p><strong>Appartement T3 65 m² à Bordeaux Chartrons, classé E → B</strong> : installation climatisation réversible multisplit Mitsubishi + VMC hygro B. Coût : 7 800 € TTC. Aides : TVA 10% (logement non éligible MaPrimeRénov' en copro). Gain : 35%.</p>
+<h2>Notre engagement : conseil indépendant</h2>
+<p>Nous ne vendons pas "une marque" — nous travaillons avec <strong>10 grandes marques</strong> différentes (Daikin, Mitsubishi, Atlantic, Bosch, Hitachi, Toshiba, Panasonic, LG, De Dietrich, Fujitsu) et choisissons celle qui correspond <strong>le mieux à votre projet</strong>, pas celle qui nous arrange commercialement. Notre intérêt à long terme : des clients satisfaits qui nous recommandent et renouvellent leurs contrats d'entretien.</p>
 
-<h2>Prêt à engager votre rénovation énergétique ?</h2>
-<p>Nous réalisons des rénovations énergétiques dans toute la Gironde : Bordeaux Métropole, Libourne, Cubzaguais, Entre-deux-Mers. Contactez-nous pour une visite technique gratuite et un premier chiffrage indicatif.</p>
+<h2>Prêt à faire le bilan de votre logement ?</h2>
+<p>Nous réalisons des bilans techniques dans toute la Gironde : Bordeaux Métropole, Libourne, Cubzaguais, Entre-deux-Mers. Le bilan est <strong>entièrement gratuit et sans engagement</strong>. Contactez-nous pour planifier un créneau.</p>
 `,
-    faqs: [FAQS[1], FAQS[0], FAQS[2], FAQS[3], FAQS[6], FAQS[9]],
+    faqs: [FAQS[0], FAQS[1], FAQS[2], FAQS[3], FAQS[6], FAQS[9]],
   },
 };
 
@@ -316,7 +291,7 @@ ${ctaBanner()}
 
 function genDevisPage() {
   const title = `Devis gratuit PAC, Clim, VMC en Gironde | ${B.name}`;
-  const desc = `Demandez votre devis gratuit sous 48h à ATMR ÉNERGIES : pompe à chaleur, climatisation, VMC, chauffage. Visite technique gratuite en Gironde. Aides MaPrimeRénov' incluses.`;
+  const desc = `Demandez votre devis gratuit sous 48h à ATMR ÉNERGIES : pompe à chaleur, climatisation, VMC, chauffage. Visite technique gratuite en Gironde. Garantie décennale.`;
   const html = head(title, desc, B.url + '/devis.html')
   + topbar()
   + nav()
@@ -333,8 +308,8 @@ function genDevisPage() {
 <ul style="margin-top:.5rem; padding-left:1.2rem; color:var(--text-mid);">
 <li>Visite technique gratuite à domicile pour dimensionnement précis</li>
 <li>Étude thermique et choix du matériel adapté (Daikin, Mitsubishi, Atlantic, Bosch...)</li>
-<li>Simulation de toutes les aides (MaPrimeRénov', CEE, TVA 5,5%, éco-PTZ)</li>
-<li>Montage intégral des dossiers administratifs — vous n'avez rien à faire</li>
+<li>Comparatif de 2 à 3 scénarios techniques (marques, puissances, émetteurs)</li>
+<li>Calcul des déperditions thermiques pour un dimensionnement précis</li>
 <li>Chiffrage détaillé poste par poste (matériel, main d'œuvre, mise en service)</li>
 </ul>
 </div>
@@ -375,7 +350,7 @@ function genMerciPage() {
 
 function genFaqPage() {
   const title = `FAQ — Questions fréquentes chauffagiste | ${B.name}`;
-  const desc = `Toutes les réponses aux questions fréquentes sur nos prestations : pompe à chaleur, climatisation, VMC, aides MaPrimeRénov', tarifs, délais, zone d'intervention Gironde.`;
+  const desc = `Toutes les réponses aux questions fréquentes sur nos prestations : pompe à chaleur, climatisation, VMC, tarifs, délais, garanties, zone d'intervention en Gironde.`;
   const html = head(title, desc, B.url + '/faq.html')
   + topbar()
   + nav()
@@ -499,7 +474,7 @@ function genRealisationsPage() {
 <img src="/img/services/pac-air-eau.webp" alt="Installation PAC air-eau Daikin Altherma à Bordeaux" width="400" height="200" loading="lazy" class="service-card-img">
 <div class="service-card-body">
 <div class="service-card-header"><h3>PAC air-eau Daikin 11 kW</h3><span class="service-price">Bordeaux</span></div>
-<p>Remplacement d'une chaudière fioul par une PAC Daikin Altherma 3 M sur radiateurs basse température. MaPrimeRénov' + CEE = reste à charge 6 200 €. Gain 68% sur la facture.</p>
+<p>Remplacement d'une chaudière fioul par une PAC Daikin Altherma 3 M sur radiateurs basse température. Chantier réalisé en 3 jours. Gain prévisionnel de 60 à 70% sur la facture de chauffage.</p>
 </div>
 </article>
 <article class="service-card">
@@ -741,8 +716,7 @@ function genCGV() {
 <p>À la demande expresse du Client, l'exécution des prestations peut commencer avant l'expiration du délai de rétractation (mention spécifique à signer sur le devis). Dans ce cas, en cas de rétractation, le Client s'acquitte des prestations déjà réalisées au prorata.</p>
 
 <h2>Article 7 - Aides financières</h2>
-<p>${B.name} assiste le Client dans le montage des dossiers d'aides (MaPrimeRénov', CEE, éco-PTZ, TVA réduite). L'obtention effective de ces aides dépend des critères d'éligibilité du Client (revenus, logement, nature des travaux) et des délais de traitement par les organismes concernés (Anah, obligés CEE, administration fiscale).</p>
-<p>${B.name} ne saurait être tenu responsable d'un refus d'aide ou d'un délai de versement anormal des organismes concernés. Le Client reste dans tous les cas tenu au paiement intégral de sa facture auprès de ${B.name}.</p>
+<p>Les travaux réalisés par ${B.name} peuvent bénéficier de la TVA à 10% dans les logements de plus de 2 ans conformément à l'article 279-0 bis du Code général des impôts. Le Client est seul responsable des démarches administratives liées à d'éventuelles aides financières auxquelles il pourrait prétendre.</p>
 
 <h2>Article 8 - Responsabilité</h2>
 <p>${B.name} est couvert par une assurance de responsabilité civile professionnelle et une garantie décennale. Sa responsabilité ne saurait être engagée en cas de dommage causé par un défaut d'entretien ou une mauvaise utilisation des équipements installés, ni en cas de dommage indirect ou immatériel consécutif à un sinistre.</p>
@@ -930,7 +904,9 @@ function genRedirects() {
 /chauffage-eau-chaude    /chauffage.html    301
 /depannage    /entretien-depannage.html    301
 /entretien    /entretien-depannage.html    301
-/renovation-energie    /renovation-energetique.html    301
+/renovation-energie    /bilan-energetique.html    301
+/renovation-energetique    /bilan-energetique.html    301
+/renovation-energetique.html    /bilan-energetique.html    301
 
 # Anciennes pages ville
 /bordeaux    /chauffagiste-bordeaux.html    301

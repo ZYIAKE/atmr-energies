@@ -14,7 +14,9 @@
 /chauffage-eau-chaude    /chauffage.html    301
 /depannage    /entretien-depannage.html    301
 /entretien    /entretien-depannage.html    301
-/renovation-energie    /renovation-energetique.html    301
+/renovation-energie    /bilan-energetique.html    301
+/renovation-energetique    /bilan-energetique.html    301
+/renovation-energetique.html    /bilan-energetique.html    301
 
 # Anciennes pages ville
 /bordeaux    /chauffagiste-bordeaux.html    301
