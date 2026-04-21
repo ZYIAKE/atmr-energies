@@ -1,5 +1,31 @@
+// GA4 event helper (no-op si consent pas donné)
+function trackEvent(name, params) {
+  try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {}
+}
+
 // Mobile nav toggle
 document.addEventListener('DOMContentLoaded', function () {
+  // Track phone clicks
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      trackEvent('phone_click', { phone: a.getAttribute('href').replace('tel:', '') });
+    });
+  });
+  // Track CTA clicks
+  document.querySelectorAll('.btn-primary, .nav-cta').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      trackEvent('cta_click', { label: (btn.textContent || '').trim().slice(0, 40), href: btn.getAttribute('href') || '' });
+    });
+  });
+  // Scroll depth (25/50/75/100)
+  var marks = [25, 50, 75, 100];
+  var fired = {};
+  window.addEventListener('scroll', function () {
+    var pct = Math.round((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100);
+    marks.forEach(function (m) {
+      if (!fired[m] && pct >= m) { fired[m] = true; trackEvent('scroll_depth', { depth: m }); }
+    });
+  }, { passive: true });
   var hamburger = document.querySelector('.hamburger');
   var navLinks = document.querySelector('.nav-links');
   if (hamburger && navLinks) {
@@ -40,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
           body: JSON.stringify(data)
         });
         if (res.ok) {
+          trackEvent('form_submit', { form_name: data.source, prestation: data.prestation || '' });
           window.location.href = '/merci.html';
         } else {
           throw new Error('http_' + res.status);

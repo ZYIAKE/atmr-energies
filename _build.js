@@ -29,6 +29,11 @@ function fixMojibake(s) {
 
 let GOOGLE_REVIEWS = { reviews: [], rating: 5, total: 0 };
 
+// ────────────────────────── TRACKING ──────────────────────────
+const GA4_MEASUREMENT_ID = 'G-BS0R3DBJKP';
+const GSC_META_TOKEN = '13D9Q5zNdnFMZixX13CDXvmxb825UXNeLhn--BPaIaE';
+const CLARITY_PROJECT_ID = ''; // à créer manuellement sur clarity.microsoft.com puis ajouter ici
+
 // ────────────────────────── DONNÉES ENTREPRISE ──────────────────────────
 const B = {
   name: 'ATMR ÉNERGIES',
@@ -257,6 +262,7 @@ function head(title, description, canonical, extraJsonLd = []) {
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#1e5c87">
+${GSC_META_TOKEN ? `<meta name="google-site-verification" content="${GSC_META_TOKEN}">` : ''}
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -265,8 +271,14 @@ function head(title, description, canonical, extraJsonLd = []) {
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
 <link rel="stylesheet" href="/style.css">
 <script>
-window.__loadGA4 = function () { if (window.__ga4Loaded) return; window.__ga4Loaded = true; /* TODO: GA4 measurement ID après setup_analytics */ };
-window.__loadClarity = function () { /* TODO: Clarity project ID */ };
+window.__loadGA4 = function () {
+  if (window.__ga4Loaded) return;
+  window.__ga4Loaded = true;
+  ${GA4_MEASUREMENT_ID ? `var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}';document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${GA4_MEASUREMENT_ID}',{anonymize_ip:true});};` : ''}
+};
+window.__loadClarity = function () {
+  ${CLARITY_PROJECT_ID ? `if(window.clarity&&window.clarity.q)return;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","${CLARITY_PROJECT_ID}");` : ''}
+};
 </script>
 ${schemas.map(s => `<script type="application/ld+json">${JSON.stringify(s, null, 2)}</script>`).join('\n')}
 </head>

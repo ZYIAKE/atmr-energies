@@ -4,3 +4,6 @@ Thumbs.db
 *.log
 .env
 .env.local
+_push.js
+_setup-analytics.js
+.claude/

@@ -1030,6 +1030,9 @@ Thumbs.db
 *.log
 .env
 .env.local
+_push.js
+_setup-analytics.js
+.claude/
 `;
   fs.writeFileSync(path.join(__dirname, '.gitignore'), gi, 'utf8');
   console.log('✓ .gitignore');
